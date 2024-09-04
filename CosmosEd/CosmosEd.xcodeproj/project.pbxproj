@@ -32,6 +32,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49CF4D272C88176100FE6D33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49CF4D282C88176700FE6D33 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		49CF4D2A2C88177800FE6D33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		49E63ED52C88166D00D30092 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +74,9 @@
 			children = (
 				49E63EE12C88166D00D30092 /* CosmosEdApp.swift */,
 				49E63EE32C88166D00D30092 /* ContentView.swift */,
+				49CF4D2A2C88177800FE6D33 /* View */,
+				49CF4D282C88176700FE6D33 /* ViewModel */,
+				49CF4D272C88176100FE6D33 /* Model */,
 				49E63EE52C88166E00D30092 /* Assets.xcassets */,
 				49E63EE72C88166E00D30092 /* Preview Content */,
 			);
