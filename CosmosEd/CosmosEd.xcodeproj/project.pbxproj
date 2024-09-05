@@ -11,6 +11,11 @@
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
 		49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE52C88166E00D30092 /* Assets.xcassets */; };
 		49E63EE92C88166E00D30092 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE82C88166E00D30092 /* Preview Assets.xcassets */; };
+		49E8584E2C89749D005352F1 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584D2C89749D005352F1 /* Planet.swift */; };
+		49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584F2C8974B7005352F1 /* Planetary Data.swift */; };
+		49E858522C89754A005352F1 /* PlanetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetVM.swift */; };
+		49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858532C8976AA005352F1 /* PlanetDetailView.swift */; };
+		49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858552C8976B5005352F1 /* PlanetRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		49E63EE32C88166D00D30092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		49E63EE52C88166E00D30092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E63EE82C88166E00D30092 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		49E8584D2C89749D005352F1 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		49E8584F2C8974B7005352F1 /* Planetary Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planetary Data.swift"; sourceTree = "<group>"; };
+		49E858512C89754A005352F1 /* PlanetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetVM.swift; sourceTree = "<group>"; };
+		49E858532C8976AA005352F1 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
+		49E858552C8976B5005352F1 /* PlanetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,8 @@
 		49CF4D272C88176100FE6D33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				49E8584D2C89749D005352F1 /* Planet.swift */,
+				49E8584F2C8974B7005352F1 /* Planetary Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -42,6 +54,7 @@
 		49CF4D282C88176700FE6D33 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				49E858512C89754A005352F1 /* PlanetVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -49,6 +62,8 @@
 		49CF4D2A2C88177800FE6D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49E858532C8976AA005352F1 /* PlanetDetailView.swift */,
+				49E858552C8976B5005352F1 /* PlanetRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,7 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E8584E2C89749D005352F1 /* Planet.swift in Sources */,
+				49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */,
+				49E858522C89754A005352F1 /* PlanetVM.swift in Sources */,
+				49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */,
 				49E63EE42C88166D00D30092 /* ContentView.swift in Sources */,
+				49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */,
 				49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
