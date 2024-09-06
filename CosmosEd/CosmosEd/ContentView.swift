@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var selection_mhx: String = "X Axis"
     var body: some View {
         VStack(alignment: .leading) {
+            
+            //  SCROLL THE TAB-BAR
             ScrollView(.vertical, showsIndicators: true) {
                 VStack (spacing: 0) {
                     VStack(spacing:16) {
@@ -25,6 +27,8 @@ struct ContentView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .frame(maxWidth: .infinity)
+                        
+                        //  SCROLL THE PLANETS
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing:0) {
                                 ZStack() {
@@ -93,7 +97,7 @@ struct ContentView: View {
                     .padding(.top, safeAreaTop)
                     .padding(.horizontal, 12)
                     .frame(maxWidth: .infinity, alignment: .top)
-                    .frame(height: geo.height * 0.84, alignment: .top)
+                    .frame(height: geo.height * 0.75, alignment: .top)
                     
                     ZStack() {
                         HStack(spacing:8) {
@@ -108,35 +112,57 @@ struct ContentView: View {
                         
                         //  MARK: BOTTOM-MENU
                         VStack(alignment: .leading, spacing:8) {
-                            HStack(spacing:4) {
-                                Text("General Information")
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
+                           
+                            //  HOUSE FILL
+                            HStack() {
                                 Spacer()
-                                Image(systemName: "square.3.layers.3d.down.right")
-                                  .font(.system(size: 20, weight: .regular))
-                                  .imageScale(.small)
-                                  .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
+                                Image(systemName: "house.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .opacity(0.8)
+
+                                
+                                Text("Home")
+                                    .font(.system(size: 25, weight: .semibold, design: .rounded))
+                                    .opacity(0.3)
+                                    .tracking(3.0)
+                                Spacer()
                             }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            .padding(10)
                             
-                            
-                            
+                            //  FAVORITE
                             HStack(spacing:4) {
-                                Text("Panorama")
+                                Text("Favorite")
                                 // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
                                   .font(.custom("SFProRounded-Medium", size: 16))
                                   .fixedSize(horizontal: false, vertical: true)
                                   .clipped()
                                 Spacer()
-                                Image(systemName: "pano.fill")
+                                Image(systemName: "heart.fill", variableValue: 1.00)
+                                  .font(.system(size: 20, weight: .regular))
+                                  .imageScale(.small)
+                                  .symbolRenderingMode(.hierarchical)
+                                  .frame(width: 24, height: 24)
+                                //square.stack
+                            }
+                            .padding(.horizontal, 16)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(height: 44, alignment: .center)
+                            .background(.black.opacity(0.1))
+                            .clipped()
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            
+                            
+                            //  GAME
+                            HStack(spacing:4) {
+                                Text("Game")
+                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
+                                  .font(.custom("SFProRounded-Medium", size: 16))
+                                  .fixedSize(horizontal: false, vertical: true)
+                                  .clipped()
+                                Spacer()
+                                Image(systemName: "gamecontroller")
                                   .font(.system(size: 20, weight: .regular))
                                   .imageScale(.small)
                                   .symbolRenderingMode(.hierarchical)
@@ -148,8 +174,10 @@ struct ContentView: View {
                             .background(.black.opacity(0.1))
                             .clipped()
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            
+                            //  NEWS
                             HStack(spacing:4) {
-                                Text("Glowing Button")
+                                Text("News")
                                 // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
                                   .font(.custom("SFProRounded-Medium", size: 16))
                                   .fixedSize(horizontal: false, vertical: true)
@@ -158,59 +186,6 @@ struct ContentView: View {
                                 Image(systemName: "aqi.medium")
                                   .font(.system(size: 20, weight: .medium))
                                   .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            HStack(spacing:4) {
-                                Text("Cover Flow")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "square.stack", variableValue: 1.00)
-                                  .font(.system(size: 20, weight: .regular))
-                                  .imageScale(.small)
-                                  .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            HStack(spacing:4) {
-                                Text("Directions")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "arrow.up.forward.circle.fill")
-                                  .font(.system(size: 20, weight: .regular))
-                                  .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            HStack(spacing:4) {
-                                Text("Flashlight")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "flashlight.on.fill")
-                                  .font(.system(size: 20, weight: .regular))
                                   .frame(width: 24, height: 24)
                             }
                             .padding(.horizontal, 16)
