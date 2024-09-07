@@ -8,7 +8,9 @@ import SwiftUI
 struct CosmosEdApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ContentView()
+            }
         }
     }
 }

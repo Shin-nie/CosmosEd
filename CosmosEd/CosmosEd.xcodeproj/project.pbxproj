@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371022C8C260C009BB71E /* PlanetInfoView.swift */; };
-		496371052C8C6E50009BB71E /* QuizDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371042C8C6E50009BB71E /* QuizDetailView.swift */; };
+		496371092C8CCFBA009BB71E /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371082C8CCFBA009BB71E /* Flashcard.swift */; };
+		4963710B2C8CD0D4009BB71E /* QuizFlashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710A2C8CD0D3009BB71E /* QuizFlashcard.swift */; };
+		4963710D2C8CD225009BB71E /* FlashcardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */; };
+		4963710F2C8CD35B009BB71E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710E2C8CD35B009BB71E /* CardView.swift */; };
+		496371112C8CD518009BB71E /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371102C8CD518009BB71E /* FlashcardView.swift */; };
 		4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998E20A2C8B0F6D000A152E /* QuizView.swift */; };
 		49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE12C88166D00D30092 /* CosmosEdApp.swift */; };
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
@@ -23,7 +27,11 @@
 
 /* Begin PBXFileReference section */
 		496371022C8C260C009BB71E /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
-		496371042C8C6E50009BB71E /* QuizDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetailView.swift; sourceTree = "<group>"; };
+		496371082C8CCFBA009BB71E /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		4963710A2C8CD0D3009BB71E /* QuizFlashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFlashcard.swift; sourceTree = "<group>"; };
+		4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardViewModel.swift; sourceTree = "<group>"; };
+		4963710E2C8CD35B009BB71E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; usesTabs = 0; };
+		496371102C8CD518009BB71E /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		4998E20A2C8B0F6D000A152E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		49E63EDE2C88166D00D30092 /* CosmosEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E63EE12C88166D00D30092 /* CosmosEdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosEdApp.swift; sourceTree = "<group>"; };
@@ -53,6 +61,8 @@
 			children = (
 				49E8584D2C89749D005352F1 /* Planet.swift */,
 				49E8584F2C8974B7005352F1 /* Planetary Data.swift */,
+				496371082C8CCFBA009BB71E /* Flashcard.swift */,
+				4963710A2C8CD0D3009BB71E /* QuizFlashcard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -61,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				49E858512C89754A005352F1 /* PlanetVM.swift */,
+				4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -72,7 +83,8 @@
 				49E858552C8976B5005352F1 /* PlanetRow.swift */,
 				496371022C8C260C009BB71E /* PlanetInfoView.swift */,
 				4998E20A2C8B0F6D000A152E /* QuizView.swift */,
-				496371042C8C6E50009BB71E /* QuizDetailView.swift */,
+				4963710E2C8CD35B009BB71E /* CardView.swift */,
+				496371102C8CD518009BB71E /* FlashcardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,9 +201,13 @@
 				49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */,
 				4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */,
 				49E858522C89754A005352F1 /* PlanetVM.swift in Sources */,
-				496371052C8C6E50009BB71E /* QuizDetailView.swift in Sources */,
 				496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */,
+				496371112C8CD518009BB71E /* FlashcardView.swift in Sources */,
 				49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */,
+				4963710B2C8CD0D4009BB71E /* QuizFlashcard.swift in Sources */,
+				4963710F2C8CD35B009BB71E /* CardView.swift in Sources */,
+				4963710D2C8CD225009BB71E /* FlashcardViewModel.swift in Sources */,
+				496371092C8CCFBA009BB71E /* Flashcard.swift in Sources */,
 				49E63EE42C88166D00D30092 /* ContentView.swift in Sources */,
 				49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */,
 				49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */,

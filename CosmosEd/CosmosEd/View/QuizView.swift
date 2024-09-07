@@ -99,8 +99,9 @@ struct QuizView: View {
                 Spacer()
                 
                 //  MARK: - Display Join Button
-                Button {
+                NavigationLink {
                     //  ACTION GOES HERE
+                    FlashcardView()
                 }label: {
                     ZStack {
                         HStack(spacing:4) {
@@ -174,5 +175,7 @@ extension Text {
 
 //  MARK: - Preview
 #Preview {
-    QuizView()
+    NavigationStack {
+        QuizView()
+    }
 }
