@@ -287,9 +287,11 @@ struct PlanetInfoView: View {
                             } // End of ZStack 3
                 }
                 .offset(y: 40)
-                
-                
             }// (I) End Of VSTACK2 - GENERAL INFO
+            //  Highlighting the box
+            .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
+            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
+            .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
         }
     }
 }
