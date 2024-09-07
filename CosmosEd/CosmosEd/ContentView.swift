@@ -100,15 +100,6 @@ struct ContentView: View {
                     .frame(height: geo.height * 0.75, alignment: .top)
                     
                     ZStack() {
-                        HStack(spacing:8) {
-//                            Text("Examples")
-//                            // MARK: Add SFProText-Medium file to Xcode, and reference it below:
-//                              .font(.custom("SFProText-Medium", size: 14))
-//                              .opacity(0.5)
-//                              .fixedSize(horizontal: false, vertical: true)
-//                              .clipped()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .center)
                         
                         //  MARK: BOTTOM-MENU
                         VStack(alignment: .leading, spacing:8) {
@@ -122,9 +113,8 @@ struct ContentView: View {
                                     .frame(width: 25, height: 25)
                                     .opacity(0.8)
 
-                                
                                 Text("Home")
-                                    .font(.system(size: 25, weight: .semibold, design: .rounded))
+                                    .font(.system(size: 25, weight: .medium, design: .rounded))
                                     .opacity(0.3)
                                     .tracking(3.0)
                                 Spacer()
@@ -134,7 +124,6 @@ struct ContentView: View {
                             //  FAVORITE
                             HStack(spacing:4) {
                                 Text("Favorite")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
                                   .font(.custom("SFProRounded-Medium", size: 16))
                                   .fixedSize(horizontal: false, vertical: true)
                                   .clipped()
@@ -221,14 +210,13 @@ struct ContentView: View {
                 .opacity(0)
                 , alignment: .bottom).overlay(
                 VStack(spacing:0) {
-                    Text("CosmosEd")
-                    // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
+                    Text("COSMOSED")
                       .font(.custom("SFProRounded-Medium", size: 24))
-                      .frame(maxWidth: .infinity, alignment: .center)
+                      .tracking(5.0)
+//                      .frame(maxWidth: .infinity, alignment: .center)
                       .frame(height: 32, alignment: .center)
                       .opacity(0.85)
                       .multilineTextAlignment(.center)
-                      .clipped()
                 }
                 .offset(y: -50)
                 .padding(.top, safeAreaTop)
