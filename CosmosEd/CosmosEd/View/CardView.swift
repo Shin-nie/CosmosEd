@@ -66,9 +66,10 @@ struct CardView: View {
                 .cornerRadius(24)
                 .overlay(
                     RoundedRectangle(cornerRadius: 24)
-                        .stroke(Color(hex: 0x4a4b50), lineWidth: 3)
+                        .stroke(Color(hex: 0x42b53), lineWidth: 2)
                 )
-                .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
+                .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
+                .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
                 .onTapGesture {
                     // Only flip the card if it's not in editing mode
                     if !isEditing {

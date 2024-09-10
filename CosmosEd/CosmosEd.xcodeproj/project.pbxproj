@@ -20,7 +20,7 @@
 		49E63EE92C88166E00D30092 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE82C88166E00D30092 /* Preview Assets.xcassets */; };
 		49E8584E2C89749D005352F1 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584D2C89749D005352F1 /* Planet.swift */; };
 		49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584F2C8974B7005352F1 /* Planetary Data.swift */; };
-		49E858522C89754A005352F1 /* PlanetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetVM.swift */; };
+		49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetViewModel.swift */; };
 		49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858532C8976AA005352F1 /* PlanetDetailView.swift */; };
 		49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858552C8976B5005352F1 /* PlanetRow.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		49E63EE82C88166E00D30092 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49E8584D2C89749D005352F1 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		49E8584F2C8974B7005352F1 /* Planetary Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planetary Data.swift"; sourceTree = "<group>"; };
-		49E858512C89754A005352F1 /* PlanetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetVM.swift; sourceTree = "<group>"; };
+		49E858512C89754A005352F1 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
 		49E858532C8976AA005352F1 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
 		49E858552C8976B5005352F1 /* PlanetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +70,7 @@
 		49CF4D282C88176700FE6D33 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				49E858512C89754A005352F1 /* PlanetVM.swift */,
+				49E858512C89754A005352F1 /* PlanetViewModel.swift */,
 				4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */,
 			);
 			path = ViewModel;
@@ -200,7 +200,7 @@
 				49E8584E2C89749D005352F1 /* Planet.swift in Sources */,
 				49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */,
 				4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */,
-				49E858522C89754A005352F1 /* PlanetVM.swift in Sources */,
+				49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */,
 				496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */,
 				496371112C8CD518009BB71E /* FlashcardView.swift in Sources */,
 				49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */,

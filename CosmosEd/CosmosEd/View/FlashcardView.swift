@@ -13,12 +13,7 @@ struct FlashcardView: View {
     
     var body: some View {
         ZStack {
-            // Background gradient that fills the entire screen
-            LinearGradient(gradient: Gradient(stops: [
-                .init(color: Color(hex: 0x5856d6), location: 0.6),
-                .init(color: Color(hex: 0xdbaf0), location: 0)
-            ]), startPoint: .top, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all) // Ignore safe area to cover the entire screen
+            BGM_Color
             
             VStack(alignment: .leading) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -33,9 +28,9 @@ struct FlashcardView: View {
                     }
                     .padding(10)
                     .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-                    .background(LinearGradient(gradient:
-                                                Gradient(stops: [.init(color: Color(hex: 0x5856d6), location: 0.8), .init(color: Color(hex: 0xdbaf0), location: 1)]),
-                                               startPoint: .top, endPoint: .bottom))//0xdba9f0
+//                    .background(LinearGradient(gradient:
+//                                                Gradient(stops: [.init(color: Color(hex: 0x5856d6), location: 0.8), .init(color: Color(hex: 0xdbaf0), location: 1)]),
+//                                               startPoint: .top, endPoint: .bottom))//0xdba9f0
                 }
                 
                 // Button to add new flashcard
@@ -62,10 +57,20 @@ struct FlashcardView: View {
             .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
         }
     }
+    
+    //  MARK: - BACKGROUND COLOR THEME
+    var BGM_Color: some View {
+        ZStack{}
+            .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .topLeading)
+            .background(LinearGradient(gradient:
+                                        Gradient(stops: [.init(color: Color(hex: 0x303030), location: CGFloat(0)), .init(color: Color(hex: 0x232323), location: CGFloat(0.518310546875)), .init(color: Color(hex: 0x202020), location: CGFloat(1))])
+                                       , startPoint: UnitPoint(x: 0, y: 0.49999999999999994), endPoint: UnitPoint(x: 1, y: 0.5))
+                .ignoresSafeArea())
+            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
+    }
 }
 
-
-
+//  MARK: - Previews
 #Preview {
     FlashcardView()
 }
