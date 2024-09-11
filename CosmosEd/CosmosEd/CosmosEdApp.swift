@@ -9,7 +9,7 @@ struct CosmosEdApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                LaunchScreenView()
             }
         }
     }

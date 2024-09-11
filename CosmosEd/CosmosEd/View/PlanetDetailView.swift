@@ -1,268 +1,221 @@
 //
-//  PlanetDetailView.swift
+//  Test2.swift
 //  CosmosEd
 
-import SwiftUI
 
 import SwiftUI
+
 struct PlanetDetailView: View {
-    
-    //  MARK: - BODY
+    //  MARK: - Properties
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+
+    //  MARK: - Body
     var body: some View {
         ZStack {
             BGM_Color
-            
             VStack(alignment: .leading) {
-                // Spacer()
-                
                 ScrollView(.vertical, showsIndicators: false) {
-                    //  MARK: - GENERAL INFORMATION
-                    VStack(alignment: .leading) {
-                        //  DISPLAYING TITLE'S LABEL
-                        HStack(spacing: 5) {
-                            Image(systemName: "info.circle")
-                                .font(.system(size: 23, weight: .bold))
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                                .padding(.trailing, 8)
-                            
-                            
-                            Text("General Information")
-                                .font(.system(size: 27, weight: .medium, design: .rounded))
-                                .tracking(2.00)
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.forward")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(Color(hex: 0x8e8e93))
-                            
-                            Spacer()
-                            
-                        }// HSTACK 1
-                        .padding()
-                        
-                        //  TIME SECTION
-                        HStack {
-                            VStack {
-                                ZStack {
-                                    // Background with rounded corners
-                                    RoundedRectangle(cornerRadius: 32)
-                                        .fill(Color.white.opacity(0.22))
-                                        .frame(width: 230, height: 156)
-                                        .shadow(color: .black.opacity(0.25), radius: 2, x:0, y:2)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 32)
-                                                .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
-                                        )
-                                    
-                                    // Overlay content
-                                    VStack(alignment: .leading) {
-                                        // Time Label on top
-                                        Text("Mercury")
-                                            .font(.system(size: 25, weight: .medium, design: .rounded))
-                                            .tracking(2.0)
-                                            .padding(12)
-                                            .frame(width: 230, alignment: .leading)
-                                            .foregroundStyle(.black.opacity(0.65)) //0x26201b
-                                            .background(Color(hex: 0xaeaeb2)) // Background for Name Label
-                                            .cornerRadius(32, corners: [.topLeft, .topRight])
-                                        //  MARK: ADJUSTING THE "TIME" LABEL
-                                            .offset(y: -15)
-                                        
-                                        // Details about day & year
-                                        VStack(alignment: .leading, spacing: 18) {
-                                            //  Day
-                                            HStack {
-                                                Image(systemName: "scalemass.fill")
-                                                    .font(.system(size: 22))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                                
-                                                Text("mass")
-                                                    .font(.system(size: 17))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                                
-                                                Spacer()
-                                                
-                                                Text("0.000174")
-                                                    .font(.system(size: 17))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                            }
-                                            
-                                            //  Year
-                                            HStack(alignment: .center) {
-                                                Image(systemName: "circle.dotted.and.circle")
-                                                    .font(.system(size: 22))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                                
-                                                Text("Period")
-                                                    .font(.system(size: 17))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                                
-                                                Spacer()
-                                                
-                                                Text("88")
-                                                    .font(.system(size: 17))
-                                                    .foregroundColor(Color(hex: 0xe5e5ea))
-                                                    .offset(x: -50)
-                                            }
-                                        }
-                                        .padding(.horizontal, 8) // Padding for the Time content inside the box
-                                    }
-                                    .padding(12) // Padding for all the content inside the box
-                                } // End of ZStack 3
-                            } // End of VStack 3
-                            
-                            Image("Mercury")
-                                .resizable()
-                                .frame(width: 130, height: 130)
-                                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.22), radius: 34, x: 0, y: -16)
-                                .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 24, x: 0, y: 2)
-                                .offset(x: -10, y: 0)
-                            
-                        }// HStack 2
-                    }// (I) End Of VSTACK2 - GENERAL INFO
                     
-                    //  MARK: - Divider
+                    //  MARK: INFORMATION SECTION
+                    // NavigationLink wrapping both SectionHeader and GeneralInfoCard
+                    NavigationLink(destination: PlanetInfoView()) {
+                        VStack {
+                            SectionHeader(iconName: "info.circle", title: "General Information")
+                            GeneralInfoCard(name: "Mercury", mass: "0.000174", period: "88")
+
+                        }
+                    }
+                    
                     divider
                     
-                    //  MARK: - VIDEOS
-                    VStack(alignment: .leading) {
-                        //  DISPLAYING TITLE'S LABEL
-                        HStack(spacing: 5) {
-                            Image(systemName: "play.rectangle.fill")
-                                .font(.system(size: 23, weight: .bold))
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                                .padding(.trailing, 8)
-                            
-                            Text("Videos")
-                                .font(.system(size: 27, weight: .medium, design: .rounded))
-                                .tracking(2.00)
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                            
-                            Spacer()
-                            
-                            
-                            Image(systemName: "chevron.forward")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(Color(hex: 0x8e8e93))
-                            
-                            //                        Spacer()
-                            
-                        }// End Of HSTACK 1 - Title's Label
-                        .padding()
-                        .padding(.top, -40)
-                        
-                        //  DISPLAYING VIDEO
-                        ZStack {
-                            Image("mercuryNasa")
-                                .resizable()
-                                .opacity(0.7) // Set the opacity here (0.5 means 50% opacity)
-                                .aspectRatio(contentMode: .fill) // Fill the available space while maintaining the aspect ratio
-                                .frame(width: 360, height: 200) // You can adjust the width and height to fit the container
-                                .cornerRadius(60) // Ensure the image is clipped to the same rounded shape
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 60)
-                                        .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
-                                )
-                                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
-                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
-                                .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
-                                .padding()
-                            
-                            Image(systemName: "arrowtriangle.forward.circle.fill")
-                                .font(.system(size: 50, weight: .regular))
-                                .frame(alignment: .center)
-                                .foregroundStyle(Color(UIColor.systemGray4))
+                    //  MARK: VIDEO SECTION
+                    // Videos Section
+                    NavigationLink(destination: VideoView()) {
+                        VStack {
+                            SectionHeader(iconName: "play.rectangle.fill", title: "Videos")
+                            MediaView(imageName: "mercuryNasa", iconOverlay: "arrowtriangle.forward.circle.fill")
                         }
-                        .padding(.top, -20)
-                        
-                    }// (I) End Of VSTACK3 - VIDEOS
+                    }
                     
-                    //  MARK: - Divider
                     divider
-                        .offset(y: -15)
                     
-                    //  MARK: - IMAGES
-                    VStack(alignment: .leading) {
-                        //  DISPLAYING TITLE'S LABEL
-                        HStack(spacing: 5) {
-                            Image(systemName: "photo.on.rectangle.angled")
-                                .font(.system(size: 23, weight: .bold))
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                                .padding(.trailing, 8)
-                            
-                            Text("Image")
-                                .font(.system(size: 27, weight: .medium, design: .rounded))
-                                .tracking(2.00)
-                                .foregroundStyle(Color(hex: 0xc7c7cc))
-                            
-                            Spacer()
-                            
-                            
-                            Image(systemName: "chevron.forward")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(Color(hex: 0x8e8e93))
-                            
-                            //                        Spacer()
-                            
-                        }// End Of HSTACK 1 - Title's Label
-                        .padding()
-                        .padding(.top, -40)
-                        
-                        //  DISPLAYING VIDEO
-                        ZStack {
-                            Image("MercuryImage")
-                                .resizable()
-                                .opacity(0.7) // Set the opacity here (0.5 means 50% opacity)
-                                .aspectRatio(contentMode: .fill) // Fill the available space while maintaining the aspect ratio
-                                .frame(width: 360, height: 200) // You can adjust the width and height to fit the container
-                                .cornerRadius(60) // Ensure the image is clipped to the same rounded shape
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 60)
-                                        .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
-                                )
-                                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
-                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
-                                .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
-                                .padding()
+                    //  MARK: IMAGE SECTION
+                    // Images Section
+                    NavigationLink (destination: ImageView()) {
+                        VStack {
+                            SectionHeader(iconName: "photo.on.rectangle.angled", title: "Image")
+                            MediaView(imageName: "MercuryImage")
                         }
-                        .padding(.top, -20)
-                        
-                    }// (I) End Of VSTACK4 - IMAGES
-                }
-                // Spacer()
-            }
-        }// (O) End Of main VStack1
-        //  Background-Color Theme
-        
+                    }
+                }// End of ScrollView
+            }// End of VStack
+        }// End of ZStack
     }
     
-    //  MARK: - DISPLAY DIVIDER LINE
-    var divider: some View{
+    // MARK: - Reusable Divider
+    var divider: some View {
         VStack {}
             .frame(width: 360, height: 0.6)
             .background(Color(hex: 0xaeaeb2))
-            .padding(.vertical, 20)
-            .padding()
-        //  .offset(x: 3, y: -145)
+            .padding(.vertical, 15)
+//            .padding()
     }
     
-    //  MARK: - BACKGROUND COLOR THEME
+    // MARK: - Background Color Theme
     var BGM_Color: some View {
-        ZStack{}
+        ZStack {}
             .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .topLeading)
-            .background(LinearGradient(gradient:
-                                        Gradient(stops: [.init(color: Color(hex: 0x303030), location: CGFloat(0)), .init(color: Color(hex: 0x232323), location: CGFloat(0.518310546875)), .init(color: Color(hex: 0x202020), location: CGFloat(1))])
-                                       , startPoint: UnitPoint(x: 0, y: 0.49999999999999994), endPoint: UnitPoint(x: 1, y: 0.5))
+            .background(LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: Color(hex: 0x303030), location: 0),
+                    .init(color: Color(hex: 0x232323), location: 0.518),
+                    .init(color: Color(hex: 0x202020), location: 1)
+                ]),
+                startPoint: .leading,
+                endPoint: .trailing)
                 .ignoresSafeArea())
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
     }
-    
-    
 }
 
-//  MARK: - Preview
+// MARK: - Section Header
+struct SectionHeader: View {
+    let iconName: String
+    let title: String
+
+    var body: some View {
+        HStack(spacing: 5) {
+            Image(systemName: iconName)
+                .font(.system(size: 23, weight: .bold))
+                .foregroundStyle(Color(hex: 0xc7c7cc))
+                .padding(.trailing, 8)
+            
+            Text(title)
+                .font(.system(size: 27, weight: .medium, design: .rounded))
+                .tracking(2.00)
+                .foregroundStyle(Color(hex: 0xc7c7cc))
+            
+            Spacer()
+            Image(systemName: "chevron.forward")
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(Color(hex: 0x8e8e93))
+        }
+        .padding(.horizontal, 20)
+        .padding()
+    }
+}
+
+// MARK: - General Info Card
+struct GeneralInfoCard: View {
+    let name: String
+    let mass: String
+    let period: String
+
+    var body: some View {
+        HStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 32)
+                    .fill(Color.white.opacity(0.22))
+                    .frame(width: 230, height: 156)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 32)
+                            .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
+                    )
+                
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .font(.system(size: 25, weight: .medium, design: .rounded))
+                        .tracking(2.0)
+                        .padding(12)
+                        .frame(width: 230, alignment: .leading)
+                        .foregroundStyle(.black.opacity(0.65))
+                        .background(Color(hex: 0xaeaeb2))
+                        .cornerRadius(32, corners: [.topLeft, .topRight])
+                        .offset(y: -15)
+
+                    VStack(alignment: .leading, spacing: 18) {
+                        InfoRow(iconName: "scalemass.fill", label: "mass", value: mass)
+                        InfoRow(iconName: "circle.dotted.and.circle", label: "Period", value: period)
+                    }
+                    .padding(.horizontal, 8)
+                }
+                .padding(12)
+            }
+            Image("Mercury")
+                .resizable()
+                .frame(width: 130, height: 130)
+                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.22), radius: 34, x: 0, y: -16)
+                .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 24, x: 0, y: 2)
+                .offset(x: -10)
+        }
+        .padding()
+    }
+}
+
+// MARK: - InfoRow for Mass and Period
+struct InfoRow: View {
+    let iconName: String
+    let label: String
+    let value: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: iconName)
+                .font(.system(size: 22))
+                .foregroundColor(Color(hex: 0xe5e5ea))
+            
+            Text(label)
+                .font(.system(size: 17))
+                .foregroundColor(Color(hex: 0xe5e5ea))
+            
+            Spacer()
+            Text(value)
+                .font(.system(size: 17))
+                .foregroundColor(Color(hex: 0xe5e5ea))
+        }
+    }
+}
+
+// MARK: - Media View for Videos and Images
+struct MediaView: View {
+    let imageName: String
+    var iconOverlay: String? = nil
+
+    var body: some View {
+        ZStack {
+            Image(imageName)
+                .resizable()
+                .opacity(0.7)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 360, height: 200)
+                .cornerRadius(60)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 60)
+                        .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
+                )
+                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
+                .padding()
+
+            if let iconOverlay = iconOverlay {
+                Image(systemName: iconOverlay)
+                    .font(.system(size: 50, weight: .regular))
+                    .foregroundStyle(Color(UIColor.systemGray4))
+            }
+        }
+        .padding(.top, -20)
+    }
+}
+
+// MARK: - Preview
 #Preview {
-    PlanetDetailView()
+    NavigationStack {
+        PlanetDetailView()
+    }
 }

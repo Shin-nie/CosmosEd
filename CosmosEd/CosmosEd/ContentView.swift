@@ -8,249 +8,129 @@ let windowScene = scenes.first as? UIWindowScene
 let window = windowScene?.windows.first
 let safeAreaTop = window?.safeAreaInsets.top
 let safeAreaBottom = window?.safeAreaInsets.bottom
+
 struct ContentView: View {
     @State var geo1: CGSize = .zero
     @State var geo2: CGSize = .zero
     @State var geo: CGSize = .zero
     @State private var selection_mhx: String = "X Axis"
+    
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
+            // Header
+            VStack {
+                Text("COSMOSED")
+                    .font(.custom("SFProRounded-Medium", size: 24))
+                    .foregroundStyle(.white)
+                    .tracking(5.0)
+                    .frame(height: 32, alignment: .center)
+                    .opacity(0.85)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, safeAreaTop)
+                    .padding(.bottom, 12)
+            }
             
-            //  SCROLL THE TAB-BAR
+            // Scroll the tab bar
             ScrollView(.vertical, showsIndicators: true) {
-                VStack (spacing: 0) {
-                    VStack(spacing:16) {
+                VStack(spacing: 0) {
+                    VStack(spacing: 16) {
                         Picker("", selection: $selection_mhx) {
-                            ForEach(["Sun","Mecury","Venus","Earth"], id: \.self) {
+                            ForEach(["Sun", "Mercury", "Venus", "Earth"], id: \.self) {
                                 Text($0)
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                        .frame(maxWidth: .infinity)
+                        .padding()
+                        //                        .padding(.top, 35)
                         
-                        //  SCROLL THE PLANETS
+                        // Scroll the planets horizontally
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing:0) {
-                                ZStack() {
-                                    Text("Sun")
-                                      .font(.custom("SFProDisplay-Regular", size: 17))
-                                      .frame(width: 406 * 0.7, height: 56, alignment: .center)
-                                      .cornerRadius(12).opacity(0.5)
-                                      .multilineTextAlignment(.center)
-                                      .clipped()
-                                      .offset(y: -180)
-                                    
-                                    Image("Sun")
-                                        .resizable()
-                                        .frame(width: 350, height: 350)
-                                }
-                                .padding(.horizontal, 16)
-                                .frame(minHeight: 0, maxHeight: .infinity, alignment: .center)
-                                .frame(width: 406, alignment: .center)
-
-
-                                //  ANOTHER PLANET - MERCURY
-                                ZStack() {
-                                    Text("Mercury")
-                                      .font(.custom("SFProDisplay-Regular", size: 17))
-                                      .frame(maxWidth: .infinity, alignment: .center)
-                                      .opacity(0.4)
-                                      .multilineTextAlignment(.center)
-                                      .fixedSize(horizontal: false, vertical: true)
-                                      .clipped()
-                                      .offset(y: -180)
-                                    Image("Mercury")
-                                        .resizable()
-                                        .frame(width: 300, height: 300)
-                                }
-                                .frame(minHeight: 0, maxHeight: .infinity, alignment: .center)
-                                .frame(width: 406, alignment: .center)
-//                                .background(alignment: .top) {
-//                                   
-//                                }
-                                
-                                
-                                //  ANOTHER PLANET -
-                                ZStack() {
-                                    Text("Venus")
-                                    // MARK: Add SFProDisplay-Regular file to Xcode, and reference it below:
-                                      .font(.custom("SFProDisplay-Regular", size: 17))
-                                      .frame(maxWidth: .infinity, alignment: .center)
-                                      .opacity(0.4)
-                                      .multilineTextAlignment(.center)
-                                      .fixedSize(horizontal: false, vertical: true)
-                                      .clipped()
-                                      .offset(y: -180)
-                                    Image("Venus")
-                                        .resizable()
-                                        .frame(width: 300, height: 300)
-                                }
-                                .frame(minHeight: 0, maxHeight: .infinity, alignment: .center)
-                                .frame(width: 406, alignment: .center)
-//                                .background(alignment: .top) {
-//                                   
-//                                }
+                            HStack(spacing: 0) {
+                                planetCard(planetName: "Mercury", imageName: "Mercury", textOffset: 0, imageSize: 300)
+                                planetCard(planetName: "Venus", imageName: "Venus", textOffset: 0, imageSize: 300)
+                                planetCard(planetName: "Earth", imageName: "Earth", textOffset: 0, imageSize: 300)
                             }
                         }
                     }
-                    //  BOTTOM-MENU ALIGNMENT
-                    .padding(.top, safeAreaTop)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, alignment: .top)
-                    .frame(height: geo.height * 0.75, alignment: .top)
+                }
+                
+                // Bottom Menu
+                VStack(alignment: .leading, spacing: 12) {
                     
-                    ZStack() {
-                        
-                        //  MARK: BOTTOM-MENU
-                        VStack(alignment: .leading, spacing:8) {
-                           
-                            //  HOUSE FILL
-                            HStack() {
-                                Spacer()
-                                Image(systemName: "house.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 25, height: 25)
-                                    .opacity(0.8)
+                    //  MARK: Home
+                    bottomMenuItem(title: "Home", systemImageName: "house.fill")
+                    
+                    //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
+                    // Wrap "General Information" with NavigationLink
+                    NavigationLink(destination: PlanetDetailView()) {
+                        bottomMenuItem(title: "Planet Information", systemImageName: "aqi.medium")
+                    }
+                  
+                    
+                    NavigationLink(destination: QuizView() ) {
+                        bottomMenuItem(title: "Game", systemImageName: "gamecontroller")
 
-                                Text("Home")
-                                    .font(.system(size: 25, weight: .medium, design: .rounded))
-                                    .opacity(0.3)
-                                    .tracking(3.0)
-                                Spacer()
-                            }
-                            .padding(10)
-                            
-                            //  FAVORITE
-                            HStack(spacing:4) {
-                                Text("Favorite")
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "heart.fill", variableValue: 1.00)
-                                  .font(.system(size: 20, weight: .regular))
-                                  .imageScale(.small)
-                                  .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
-                                //square.stack
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            
-                            
-                            //  GAME
-                            HStack(spacing:4) {
-                                Text("Game")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "gamecontroller")
-                                  .font(.system(size: 20, weight: .regular))
-                                  .imageScale(.small)
-                                  .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            
-                            //  NEWS
-                            HStack(spacing:4) {
-                                Text("News")
-                                // MARK: Add SFProRounded-Medium file to Xcode, and reference it below:
-                                  .font(.custom("SFProRounded-Medium", size: 16))
-                                  .fixedSize(horizontal: false, vertical: true)
-                                  .clipped()
-                                Spacer()
-                                Image(systemName: "aqi.medium")
-                                  .font(.system(size: 20, weight: .medium))
-                                  .symbolRenderingMode(.hierarchical)
-                                  .frame(width: 24, height: 24)
-                            }
-                            .padding(.horizontal, 16)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: 44, alignment: .center)
-                            .background(.black.opacity(0.1))
-                            .clipped()
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        }
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
                     }
-                    .padding(.bottom, safeAreaBottom)
-                    .padding([.horizontal, .top], 16)
-                    .frame(maxWidth: .infinity, alignment: .top)
-                    .frame(height: geo.height * 0.6, alignment: .top)
-                    .background(.white)
-                    .cornerRadius(24, corners: [.topRight, .topLeft])
-                    }
+                    
+                    bottomMenuItem(title: "Favorite", systemImageName: "heart.fill")
                 }
-                .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .top)
-                .background(LinearGradient(gradient:
-                Gradient(stops: [.init(color: .white, location: CGFloat(0)), .init(color: Color(hex: 0xc7cccd), location: CGFloat(0.9701334635416666))])
-                    , startPoint: UnitPoint(x: 0.5, y: 0), endPoint: UnitPoint(x: 0.5, y: 1))
-                    .ignoresSafeArea())
-                    .saveSize(in: $geo)
-                }
-                .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
-                .overlay(
-                VStack {}
-                .frame(maxWidth: .infinity, alignment: .topLeading)
-                .frame(height: 200, alignment: .topLeading)
-                .background(.white)
-                .opacity(0)
-                , alignment: .bottom).overlay(
-                VStack(spacing:0) {
-                    Text("COSMOSED")
-                      .font(.custom("SFProRounded-Medium", size: 24))
-                      .tracking(5.0)
-//                      .frame(maxWidth: .infinity, alignment: .center)
-                      .frame(height: 32, alignment: .center)
-                      .opacity(0.85)
-                      .multilineTextAlignment(.center)
-                }
-                .offset(y: -50)
-                .padding(.top, safeAreaTop)
-                .padding(.bottom, 12)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .background(LinearGradient(gradient:
-                Gradient(stops: [.init(color: .white, location: CGFloat(0)), .init(color: .white.opacity(0), location: CGFloat(1))])
-                , startPoint: UnitPoint(x: 0.5, y: 0), endPoint: UnitPoint(x: 0.5, y: 1))
-                )
-                , alignment: .top).overlay(
-                HStack(spacing:0) {
-                    Image(systemName: "square.grid.2x2.fill")
-                      .font(.system(size: 18, weight: .regular))
-                      .imageScale(.small)
-                      .foregroundStyle(.white)
-                      .frame(width: 28, height: 28)
-                    Text("Gallery")
-                    // MARK: Add SFProText-Semibold file to Xcode, and reference it below:
-                      .font(.custom("SFProText-Semibold", size: 14))
-                      .foregroundStyle(.white)
-                      .fixedSize(horizontal: false, vertical: true)
-                      .clipped()
-                }
-                .padding(.trailing, 12)
-                .padding(.leading, 8)
-                .frame(height: 40, alignment: .center)
-                .background(.black)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: 48, style: .continuous))
-                .shadow(color: .black.opacity(0.24), radius: 12, x: 0, y: 4)
-                .padding(.bottom, safeAreaBottom)
-                , alignment: .bottom)
-                .ignoresSafeArea(.all, edges: [.bottom])
-                }
+                //  FORMATTING THE NAVIGATION BUTTON SO IT DOES NOT BLUE
+                .buttonStyle(PlainButtonStyle()) // Prevents the automatic blue tint on NavigationLink
+                .foregroundColor(.black) // Set your preferred color here
+                
+                //  PADDING each box
+                .padding(.horizontal, 30)
+                .padding(.top, 30)
+                .padding(.bottom, 80)
+                .background(Color.white.opacity(0.8))
+                .cornerRadius(24, corners: [.topRight, .topLeft])
+                .offset(y: 40)
+            }
+            
+        }
+        .background(
+            LinearGradient(gradient: Gradient(stops: [.init(color: .black, location: 0), .init(color: Color(hex: 0xc7cccd), location: 0.97)]),
+                           startPoint: .top, endPoint: .bottom)
+        )
+        .ignoresSafeArea(edges: .all)
+    }
+    
+    // Function to generate a planet card
+    func planetCard(planetName: String, imageName: String, textOffset: CGFloat, imageSize: CGFloat) -> some View {
+        VStack {
+            Text(planetName)
+                .font(.custom("SFProDisplay-Regular", size: 17))
+                .foregroundStyle(.white)
+                .opacity(0.3)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .offset(y: textOffset)
+            
+            
+            Image(imageName)
+                .resizable()
+                .frame(width: imageSize, height: imageSize)
+                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.15), radius: 10, x: 0, y: -16)
+                .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 5, x: 0, y: 2)
+                .offset(x: -10, y: 0)
+        }
+        .frame(width: 406, alignment: .center)
+    }
+    
+    // Function to generate a bottom menu item
+    func bottomMenuItem(title: String, systemImageName: String) -> some View {
+        HStack() {
+            Text(title)
+                .font(.custom("SFProRounded-Medium", size: 16))
+            Spacer()
+            Image(systemName: systemImageName)
+                .font(.system(size: 20, weight: .medium))
+                .frame(width: 24, height: 24)
+        }
+        .padding(.horizontal, 20)
+        .frame(height: 44, alignment: .center)
+        .background(Color.black.opacity(0.1))
+        .cornerRadius(12)
+    }
 }
 
 //  MARK: - Color
@@ -270,7 +150,7 @@ struct SizeCalculator: ViewModifier {
         content.background(
             GeometryReader { proxy in
                 Color.clear
-                .onAppear { size = proxy.size }
+                    .onAppear { size = proxy.size }
             }
         )
     }
@@ -301,5 +181,7 @@ extension View {
 
 //  MARK: - PREVIEW
 #Preview {
-    ContentView()
+    NavigationStack {
+        ContentView()
+    }
 }
