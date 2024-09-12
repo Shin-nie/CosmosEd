@@ -27,6 +27,7 @@
 		49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetViewModel.swift */; };
 		49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858532C8976AA005352F1 /* PlanetDetailView.swift */; };
 		49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858552C8976B5005352F1 /* PlanetRow.swift */; };
+		DD63F3532C93306900E38C45 /* API Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63F3522C93306900E38C45 /* API Handler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		49E858512C89754A005352F1 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
 		49E858532C8976AA005352F1 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
 		49E858552C8976B5005352F1 /* PlanetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRow.swift; sourceTree = "<group>"; };
+		DD63F3522C93306900E38C45 /* API Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Handler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				49E8584F2C8974B7005352F1 /* Planetary Data.swift */,
 				496371082C8CCFBA009BB71E /* Flashcard.swift */,
 				4963710A2C8CD0D3009BB71E /* QuizFlashcard.swift */,
+				DD63F3522C93306900E38C45 /* API Handler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */,
 				49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */,
 				496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */,
+				DD63F3532C93306900E38C45 /* API Handler.swift in Sources */,
 				490804132C9194AF0033281E /* VideoView.swift in Sources */,
 				490804152C9197B90033281E /* ImageView.swift in Sources */,
 				490803D62C9151410033281E /* Test.swift in Sources */,
@@ -375,6 +379,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,6 +408,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

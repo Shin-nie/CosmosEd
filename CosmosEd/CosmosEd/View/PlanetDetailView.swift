@@ -36,7 +36,9 @@ struct PlanetDetailView: View {
                     
                     //  MARK: VIDEO SECTION
                     // Videos Section
-                    NavigationLink(destination: VideoView()) {
+                    
+                    //  MARK: nho pass viewModel lai dang hoang
+                    NavigationLink(destination: VideoView(viewModel: PlanetViewModel())) {
                         VStack {
                             SectionHeader(iconName: "play.rectangle.fill", title: "Videos")
                             MediaView(imageName: "mercuryNasa", iconOverlay: "arrowtriangle.forward.circle.fill")
