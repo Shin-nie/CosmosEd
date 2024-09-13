@@ -97,7 +97,7 @@ struct Test: View {
 struct BottomMenuView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            NavigationLink(destination: PlanetDetailView()) {
+            NavigationLink(destination: PlanetDetailView(infoAPI: InfoAPI(), viewModel: PlanetViewModel())) {
                 bottomMenuItem(title: "General Information", systemImageName: "aqi.medium")
             }
             bottomMenuItem(title: "Home", systemImageName: "house.fill")

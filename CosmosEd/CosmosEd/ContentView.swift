@@ -2,6 +2,9 @@
 //  ContentView.swift
 //  CosmosEd
 
+//  MARK: To achieve dynamic text updates while scrolling, you need to detect the visible planet in the ScrollView. A common approach is to use a GeometryReader to check when a planet is close to the center of the view and update the currentPlanet accordingly.
+
+
 import SwiftUI
 let scenes = UIApplication.shared.connectedScenes
 let windowScene = scenes.first as? UIWindowScene
@@ -14,6 +17,13 @@ struct ContentView: View {
     @State var geo2: CGSize = .zero
     @State var geo: CGSize = .zero
     @State private var selection_mhx: String = "X Axis"
+    
+    @ObservedObject var planetVM = PlanetViewModel()
+    
+    //  MARK: Use GeometryReader to track the position of each planet card.
+    //  Update PlanetViewModel‘s currentPlanet based on the card’s position relative to the ScrollView
+//    @State private var scrollOffset: CGFloat = 0.0
+    
     
     var body: some View {
         VStack {
@@ -41,14 +51,26 @@ struct ContentView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .padding()
-                        //                        .padding(.top, 35)
+                        
+                        //  MARK: DISPLAY CURRENT PLANET
+                        Text(planetVM.currentPlanet)
+                            .font(.custom("SFProDisplay-Regular", size: 17))
+                            .foregroundStyle(.white)
+                            .opacity(0.3)
+                            .frame(maxWidth: .infinity, alignment: .center)
                         
                         // Scroll the planets horizontally
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 0) {
-                                planetCard(planetName: "Mercury", imageName: "Mercury", textOffset: 0, imageSize: 300)
-                                planetCard(planetName: "Venus", imageName: "Venus", textOffset: 0, imageSize: 300)
-                                planetCard(planetName: "Earth", imageName: "Earth", textOffset: 0, imageSize: 300)
+                                ForEach(planetVM.planets) { planet in
+                                    GeometryReader { geo in
+                                        planetCard(planet: planet)
+                                            .onChange(of: geo.frame(in: .global).midX) { newX in
+                                                updateCurrentPlanetIfNeeded(for: planet, geo: geo)
+                                            }
+                                    }
+                                    .frame(width: 390, height: 400) // Set frame for each card
+                                }
                             }
                         }
                     }
@@ -62,14 +84,14 @@ struct ContentView: View {
                     
                     //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
                     // Wrap "General Information" with NavigationLink
-                    NavigationLink(destination: PlanetDetailView()) {
+                    NavigationLink(destination: PlanetDetailView(infoAPI: InfoAPI(), viewModel: PlanetViewModel())) {
                         bottomMenuItem(title: "Planet Information", systemImageName: "aqi.medium")
                     }
-                  
+                    
                     
                     NavigationLink(destination: QuizView() ) {
                         bottomMenuItem(title: "Game", systemImageName: "gamecontroller")
-
+                        
                     }
                     
                     bottomMenuItem(title: "Favorite", systemImageName: "heart.fill")
@@ -81,10 +103,9 @@ struct ContentView: View {
                 //  PADDING each box
                 .padding(.horizontal, 30)
                 .padding(.top, 30)
-                .padding(.bottom, 80)
+                .padding(.bottom, 30) // The sheet height
                 .background(Color.white.opacity(0.8))
                 .cornerRadius(24, corners: [.topRight, .topLeft])
-                .offset(y: 40)
             }
             
         }
@@ -95,25 +116,46 @@ struct ContentView: View {
         .ignoresSafeArea(edges: .all)
     }
     
+    
+    // MARK: Function to update the current planet name based on scroll position
+        func updateCurrentPlanetIfNeeded(for planet: Planet, geo: GeometryProxy) {
+            let screenWidth = UIScreen.main.bounds.width
+            let cardMidX = geo.frame(in: .global).midX
+            let screenCenterX = screenWidth / 2
+            
+            // The closer the cardMidX is to the screenCenterX, the more centered it is
+            if abs(cardMidX - screenCenterX) < 100 { // Tweak this value if needed
+                if planetVM.currentPlanet != planet.name {
+                    planetVM.updateCurrentPlanet(to: planet)
+                }
+            }
+        }
+    
     // Function to generate a planet card
-    func planetCard(planetName: String, imageName: String, textOffset: CGFloat, imageSize: CGFloat) -> some View {
+    func planetCard(planet: Planet) -> some View {
         VStack {
-            Text(planetName)
+//            Text(planet.name)
+//                .font(.custom("SFProDisplay-Regular", size: 17))
+//                .foregroundStyle(.white)
+//                .opacity(0.3)
+//                .frame(maxWidth: .infinity, alignment: .center)
+            
+            Text("")
+                .padding(.top, 20)
                 .font(.custom("SFProDisplay-Regular", size: 17))
                 .foregroundStyle(.white)
                 .opacity(0.3)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .offset(y: textOffset)
             
             
-            Image(imageName)
+            Image(planet.assetImageName)
                 .resizable()
-                .frame(width: imageSize, height: imageSize)
+                .frame(width: 300, height: 300)
+            
                 .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.15), radius: 10, x: 0, y: -16)
                 .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 5, x: 0, y: 2)
-                .offset(x: -10, y: 0)
         }
-        .frame(width: 406, alignment: .center)
+        .frame(width: 380, alignment: .center)
     }
     
     // Function to generate a bottom menu item

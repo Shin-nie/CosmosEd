@@ -18,6 +18,7 @@
 		4963710F2C8CD35B009BB71E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710E2C8CD35B009BB71E /* CardView.swift */; };
 		496371112C8CD518009BB71E /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371102C8CD518009BB71E /* FlashcardView.swift */; };
 		4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998E20A2C8B0F6D000A152E /* QuizView.swift */; };
+		49DE14EA2C937E370084B767 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14E92C937E370084B767 /* Test2.swift */; };
 		49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE12C88166D00D30092 /* CosmosEdApp.swift */; };
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
 		49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE52C88166E00D30092 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		4963710E2C8CD35B009BB71E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		496371102C8CD518009BB71E /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		4998E20A2C8B0F6D000A152E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		49DE14E92C937E370084B767 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
 		49E63EDE2C88166D00D30092 /* CosmosEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E63EE12C88166D00D30092 /* CosmosEdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosEdApp.swift; sourceTree = "<group>"; };
 		49E63EE32C88166D00D30092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				490804122C9194AF0033281E /* VideoView.swift */,
 				490804142C9197B90033281E /* ImageView.swift */,
 				490803D52C9151410033281E /* Test.swift */,
+				49DE14E92C937E370084B767 /* Test2.swift */,
 				49E858552C8976B5005352F1 /* PlanetRow.swift */,
 				4998E20A2C8B0F6D000A152E /* QuizView.swift */,
 				4963710E2C8CD35B009BB71E /* CardView.swift */,
@@ -228,6 +231,7 @@
 				DD63F3532C93306900E38C45 /* API Handler.swift in Sources */,
 				490804132C9194AF0033281E /* VideoView.swift in Sources */,
 				490804152C9197B90033281E /* ImageView.swift in Sources */,
+				49DE14EA2C937E370084B767 /* Test2.swift in Sources */,
 				490803D62C9151410033281E /* Test.swift in Sources */,
 				490803D32C9142AA0033281E /* LaunchScreenView.swift in Sources */,
 				496371112C8CD518009BB71E /* FlashcardView.swift in Sources */,

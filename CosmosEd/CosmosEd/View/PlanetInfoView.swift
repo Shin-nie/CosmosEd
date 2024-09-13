@@ -7,6 +7,8 @@ import SwiftUI
 struct PlanetInfoView: View {
     //  MARK: - Properties
     
+    @ObservedObject var infoAPI = InfoAPI() // Observe the API class for changes
+    @ObservedObject var viewModel: PlanetViewModel   //  Viewmodel to track selected planet
     
     
     //  MARK: - Body
@@ -18,171 +20,160 @@ struct PlanetInfoView: View {
             ScrollView(.vertical) {
                 
                 //  MARK: FIRST BOX
-                VStack(alignment: .leading) {
-                    //  DISPLAYING TITLE'S LABEL
-                    HStack(spacing: 5) {
-                        Image(systemName: "info.circle")
-                            .font(.system(size: 23, weight: .bold))
-                            .foregroundStyle(Color(hex: 0xc7c7cc))
-                            .padding(.trailing, 8)
-                        
-                        
-                        Text("General Information")
-                            .font(.system(size: 27, weight: .medium, design: .rounded))
-                            .tracking(2.00)
-                            .foregroundStyle(Color(hex: 0xc7c7cc))
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.down")
-                            .font(.system(size: 20, weight: .semibold))
-                            .foregroundStyle(Color(hex: 0x8e8e93))
-                        
-//                        Spacer()
-                        
-                    }// HSTACK 1
-                    .padding()
-                    
-                    //  NAME SECTION
-                    HStack {
-                        VStack {
-                            ZStack {
-                                // Background with rounded corners
-                                RoundedRectangle(cornerRadius: 32)
-                                    .fill(Color.white.opacity(0.22))
-                                    .frame(width: 230, height: 156)
-                                    .shadow(color: .black.opacity(0.25), radius: 2, x:0, y:2)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 32)
-                                            .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
-                                    )
-                                
-                                // Overlay content - Name box
-                                VStack(alignment: .leading) {
-                                    // Time Label on top
-                                    Text("Mercury")
-                                        .font(.system(size: 25, weight: .medium, design: .rounded))
-                                        .tracking(2.0)
-                                        .padding(12)
-                                        .frame(width: 230, alignment: .leading)
-                                        .foregroundStyle(.black.opacity(0.65)) //0x26201b
-                                        .background(Color(hex: 0xaeaeb2)) // Background for Name Label
-                                        .cornerRadius(32, corners: [.topLeft, .topRight])
-                                    //  MARK: ADJUSTING THE "TIME" LABEL
-                                        .offset(y: -15)
-                                    
-                                    // Details about day & year
-                                    VStack(alignment: .leading, spacing: 18) {
-                                        //  Day
-                                        HStack {
-                                            Image(systemName: "scalemass.fill")
-                                                .font(.system(size: 22))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            
-                                            Text("mass")
-                                                .font(.system(size: 17))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            
-                                            Spacer()
-                                            
-                                            Text("0.000174")
-                                                .font(.system(size: 17))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                        }
-                                        
-                                        //  Year
-                                        HStack(alignment: .center) {
-                                            Image(systemName: "circle.dotted.and.circle")
-                                                .font(.system(size: 22))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            
-                                            Text("Period")
-                                                .font(.system(size: 17))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            
-                                            Spacer()
-                                            
-                                            Text("88")
-                                                .font(.system(size: 17))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                                .offset(x: -50)
-                                        }
-                                    }
-                                    .padding(.horizontal, 8) // Padding for the Time content inside the box
-                                }
-                                .padding(12) // Padding for all the content inside the box
-            
-                            } // End of ZStack 3
-                        } // End of VStack 3
-                        
-                        Image("Mercury")
-                            .resizable()
-                            .frame(width: 130, height: 130)
-                            .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.22), radius: 34, x: 0, y: -16)
-                            .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 24, x: 0, y: 2)
-                            .offset(x: -10, y: 0)
-                        
-                    }// HStack 2
-                }
-                                
-                //  MARK: TEMPERATURE SECTION
-                VStack(alignment: .leading) {
-                        VStack {
-                            ZStack {
-                                // Background with rounded corners
-                                RoundedRectangle(cornerRadius: 32)
-                                    .fill(Color.white.opacity(0.22))
-                                    .frame(width: 360, height: 156)
-                                    .shadow(color: .black.opacity(0.25), radius: 2, x:0, y:2)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 32)
-                                            .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
-                                    )
-                                
-                                // Overlay content - Name box
-                                VStack(alignment: .leading) {
-                                    // Time Label on top
-                                    Text("Temprature")
-                                        .font(.system(size: 25, weight: .medium, design: .rounded))
-                                        .tracking(2.0)
-                                        .padding(12)
-                                        .frame(width: 360, alignment: .leading)
-                                        .foregroundStyle(.black.opacity(0.65)) //0x26201b
-                                        .background(Color(hex: 0xaeaeb2)) // Background for Name Label
-                                        .cornerRadius(32, corners: [.topLeft, .topRight])
-                                    //  MARK: ADJUSTING THE LABEL
-                                        .offset(x: 5, y: -10)
-                                    
-                                    // Details about day & year
-                                    VStack(alignment: .leading, spacing: 18) {
-                                        
-                                        //  Year
-                                        HStack(alignment: .center) {
-                                            Spacer()
-
-                                            Image(systemName: "thermometer.high")
-                                                .font(.system(size: 60))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            
-                                            Spacer()
-                                            
-                                            Text("400")
-                                                .font(.system(size: 35))
-                                                .foregroundColor(Color(hex: 0xe5e5ea))
-                                            Spacer()
-                                        }
-                                    }
-                                    .padding(.horizontal, 8) // Padding for the Time content inside the box
-                                }
-                                .padding(12) // Padding for all the content inside the box
-            
-                            } // End of ZStack 3
-                        } // End of VStack 3
-                }
-                .offset(y: 20)
                 
-                //  MARK: More Information
-                VStack(alignment: .leading) {
+                //  DISPLAYING TITLE'S LABEL
+                SectionHeader(iconName: "info.circle", title: "General Information")
+                
+                //  MARK: NAME SECTION
+                // Check if planets data is available
+                if infoAPI.planets.isEmpty {
+                    Text("Loading Planets...")
+                        .font(.title)
+                        .padding()
+                } else {
+                    // Iterate over the planets fetched by the API
+                    if let planet = infoAPI.planets.first(where: { $0.name == viewModel.currentPlanet}) {
+                        
+                        //  MARK: FIRST BOX
+                        VStack(alignment: .leading) {
+                            HStack {
+                                // Display planet image and details
+                                VStack {
+                                    ZStack {
+                                        // Background with rounded corners
+                                        RoundedRectangle(cornerRadius: 32)
+                                            .fill(Color.white.opacity(0.22))
+                                            .frame(width: 230, height: 156)
+                                            .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 32)
+                                                    .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
+                                            )
+                                        
+                                        // Overlay content - Planet details
+                                        VStack(alignment: .leading) {
+                                            // Name Label
+                                            Text(planet.name)
+                                                .font(.system(size: 25, weight: .medium, design: .rounded))
+                                                .tracking(2.0)
+                                                .padding(12)
+                                                .frame(width: 230, alignment: .leading)
+                                                .foregroundStyle(.black.opacity(0.65))
+                                                .background(Color(hex: 0xaeaeb2)) // Background for Name Label
+                                                .cornerRadius(32, corners: [.topLeft, .topRight])
+                                            
+                                            // Details about the planet
+                                            VStack(alignment: .leading, spacing: 18) {
+                                                // Mass
+                                                HStack {
+                                                    Image(systemName: "scalemass.fill")
+                                                        .font(.system(size: 22))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                    
+                                                    Text("Mass:")
+                                                        .font(.system(size: 17))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                    
+                                                    Spacer()
+                                                    
+                                                    Text("\(planet.mass ?? 0)")
+                                                        .font(.system(size: 17))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                }
+                                                
+                                                // Period
+                                                HStack {
+                                                    Image(systemName: "circle.dotted.and.circle")
+                                                        .font(.system(size: 22))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                    
+                                                    Text("Period:")
+                                                        .font(.system(size: 17))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                    
+                                                    Spacer()
+                                                    
+                                                    Text("\(planet.period ?? 0)")
+                                                        .font(.system(size: 17))
+                                                        .foregroundColor(Color(hex: 0xe5e5ea))
+                                                }
+                                            }
+                                            .padding(.horizontal, 10) // padding the detailed information
+                                            
+                                        }
+                                        .padding(30) // PADDING The text inside include the white label
+                                        .offset(y: -15)
+                                    }
+                                }
+                                
+                                Image(planet.assetImageName)
+                                    .resizable()
+                                    .frame(width: 130, height: 130)
+                                    .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.22), radius: 34, x: 0, y: -16)
+                                    .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 24, x: 0, y: 2)
+                                    .offset(x: -25)
+                            }
+                        }
+//                        .padding(.vertical, 10)
+                        
+                        //  MARK: TEMPERATURE SECTION
+                        VStack(alignment: .leading) {
+                            VStack {
+                                ZStack {
+                                    // Background with rounded corners
+                                    RoundedRectangle(cornerRadius: 32)
+                                        .fill(Color.white.opacity(0.22))
+                                        .frame(width: 360, height: 156)
+                                        .shadow(color: .black.opacity(0.25), radius: 2, x:0, y:2)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 32)
+                                                .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
+                                        )
+                                    
+                                    // Overlay content - Name box
+                                    VStack(alignment: .leading) {
+                                        // Time Label on top
+                                        Text("Temprature")
+                                            .font(.system(size: 25, weight: .medium, design: .rounded))
+                                            .tracking(2.0)
+                                            .padding(12)
+                                            .frame(width: 360, alignment: .leading)
+                                            .foregroundStyle(.black.opacity(0.65)) //0x26201b
+                                            .background(Color(hex: 0xaeaeb2)) // Background for Name Label
+                                            .cornerRadius(32, corners: [.topLeft, .topRight])
+                                        //  MARK: ADJUSTING THE LABEL
+                                            .offset(x: 5, y: -10)
+                                        
+                                        // Details about day & year
+                                        VStack(alignment: .leading, spacing: 18) {
+                                            
+                                            //  Year
+                                            HStack(alignment: .center) {
+                                                Spacer()
+                                                
+                                                Image(systemName: "thermometer.high")
+                                                    .font(.system(size: 60))
+                                                    .foregroundColor(Color(hex: 0xe5e5ea))
+                                                
+                                                Spacer()
+                                                
+                                                Text("\(planet.temperature ?? 0)")
+                                                    .font(.system(size: 35))
+                                                    .foregroundColor(Color(hex: 0xe5e5ea))
+                                                Spacer()
+                                            }
+                                        }
+                                        .padding(.horizontal, -1) // Padding for the Time content inside the box
+                                    }
+                                    .padding(29) // Padding for all the content inside the box
+                                    
+                                } // End of ZStack 3
+                            } // End of VStack 3
+                        }
+                          .offset(y: -10)
+                        
+                        //  MARK: More Information
+                        VStack(alignment: .leading) {
                             ZStack {
                                 // Background with rounded corners
                                 RoundedRectangle(cornerRadius: 32)
@@ -222,7 +213,7 @@ struct PlanetInfoView: View {
                                             
                                             Spacer()
                                             
-                                            Text("0.0341")
+                                            Text("\(planet.radius ?? 0)")
                                                 .font(.system(size: 17))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
                                         }
@@ -239,14 +230,14 @@ struct PlanetInfoView: View {
                                             
                                             Spacer()
                                             
-                                            Text("0.000011")
+                                            Text("\(planet.distance_light_year ?? 0)")
                                                 .font(.system(size: 17))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
                                         }
                                         
                                         //  Host star mass HStack
                                         HStack() {
-
+                                            
                                             Image(systemName: "moon.stars")
                                                 .font(.system(size: 22))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
@@ -257,14 +248,14 @@ struct PlanetInfoView: View {
                                             
                                             Spacer()
                                             
-                                            Text("1")
+                                            Text("\(planet.host_star_mass ?? 0)")
                                                 .font(.system(size: 17))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
                                         }
-                                           
+                                        
                                         //  Host star temperature HStack
                                         HStack() {
-
+                                            
                                             Image(systemName: "thermometer.sun.fill")
                                                 .font(.system(size: 22))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
@@ -275,23 +266,31 @@ struct PlanetInfoView: View {
                                             
                                             Spacer()
                                             
-                                            Text("6000")
+                                            Text("\(planet.host_star_temperature ?? 0)")
                                                 .font(.system(size: 17))
                                                 .foregroundColor(Color(hex: 0xe5e5ea))
                                         }
                                     }
                                     .padding(.horizontal, 20) // Padding for the Time content inside the box
                                 }
-                                .padding(12) // Padding for all the content inside the box
-            
+                                .padding(29) // Padding for all the content inside the box
+                                
                             } // End of ZStack 3
+                        }
+//                        .offset(y: 40)
+                        
+                    }
                 }
-                .offset(y: 40)
             }// (I) End Of VSTACK2 - GENERAL INFO
             //  Highlighting the box
             .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
             .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
+            
+            //  MARK: Uncomment this to fetch data
+            .onAppear {
+                infoAPI.fetchSolarSystemPlanets() // Call the API on view load
+            }
         }
     }
 }
@@ -309,5 +308,5 @@ var BGM_Color: some View {
 
 //  MARK: - Preview
 #Preview {
-    PlanetInfoView()
+    PlanetInfoView(viewModel: PlanetViewModel())
 }

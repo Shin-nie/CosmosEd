@@ -1,9 +1,6 @@
 //
 //  VideoView.swift
 //  CosmosEd
-//
-//  Created by Hang Vu on 11/9/2024.
-//
 
 import SwiftUI
 import AVKit
@@ -14,9 +11,12 @@ struct VideoView: View {
     
     @ObservedObject var planetAPI = MediaObjectAPI()
     @State var videoLinks: [MediaObjectItem] = []
+    
+    //  MARK: Keep track of the search input
     @State private var searchText = ""
     
     
+    // Filters the media based on search text, returns the full list if search text is empty
     var filteredPlanets: [MediaObjectItem] {
         if searchText.isEmpty {
             return planetAPI.planets
@@ -45,7 +45,7 @@ struct VideoView: View {
                             .foregroundStyle(Color(hex: 0xc7c7cc))
                             .padding(.trailing, 8)
                         
-                        
+            
                         Text("Videos")
                             .font(.system(size: 27, weight: .medium, design: .rounded))
                             .tracking(2.00)
@@ -96,7 +96,7 @@ struct VideoView: View {
                             
                             if item.href.contains("/image/"){
                                 
-                                // Display image
+                                //  Display image
                                 if let link = item.links?.first(where: { $0.render == "image" || $0.href.hasSuffix(".jpg") }) {
                                     AsyncImage(url: URL(string: link.href)) { image in
                                         image
@@ -112,6 +112,7 @@ struct VideoView: View {
                                             .padding()
                                     } placeholder: {
                                         ProgressView()
+                                        // Shows a loading spinner while the image is loading
                                     }
                                 }
                             }
@@ -145,11 +146,9 @@ struct VideoView: View {
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
             .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
             
-            // MARK: Uncomment this one to fetch Data
+//             MARK: Uncomment this one to fetch Data
 //            .onAppear {
 //                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet) // Example query
-//                
-//                
 //            }
             
         }

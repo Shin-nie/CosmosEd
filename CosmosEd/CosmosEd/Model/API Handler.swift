@@ -59,7 +59,7 @@ class MediaObjectAPI: ObservableObject {
     @Published var planets = [MediaObjectItem]()
     
     let apiKey = "c27PNpJEi5tdIgo3lBeSR0gd9e0tBNosInFbSxKq"
-    let apiRoot = "https://images-api.nasa.gov/search"
+    let apiRoot = "https://images-api.nasa.gov/search" //https://images-api.nasa.gov/search
     
     func fetchMediaObjects(searchQuery: String) {
         let urlString = "\(apiRoot)?q=\(searchQuery)&media_type=image,video"
@@ -106,7 +106,8 @@ func convertToHTTPS(urlString: String) -> String {
     }
 }
 
-//  MARK: Info API
+//  MARK: - Info API
+
 class InfoAPI: ObservableObject {
     @Published var planets: [Planet] = [] // Store multiple planets here
     private let apiKey = "ZtK3G/gPhJPPevcqPAjtwQ==lqklW02aFzQ4C68y"
@@ -122,7 +123,7 @@ class InfoAPI: ObservableObject {
     }
 
     // Fetch solar system planets by their names dynamically
-    private func fetchSolarSystemPlanets() {
+    public func fetchSolarSystemPlanets() {
         let solarSystemPlanets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"]
         for planetName in solarSystemPlanets {
             let urlString = "\(baseUrl)?name=\(planetName)"
@@ -135,9 +136,10 @@ class InfoAPI: ObservableObject {
             var request = URLRequest(url: url)
             request.setValue(apiKey, forHTTPHeaderField: "X-Api-Key")
             
-            URLSession.shared.dataTask(with: request) { data, response, error in
+            // Asynchronous data task
+            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
                 if let error = error {
-                    print("Error fetching data for \(planetName): \(error)")
+                    print("Error fetching data for \(planetName): \(error.localizedDescription)")
                     return
                 }
 
@@ -147,16 +149,36 @@ class InfoAPI: ObservableObject {
                 }
 
                 do {
-                    // Decode the response and append the solar system planet to the list
-                    let planet = try JSONDecoder().decode([Planet].self, from: data)
-                    DispatchQueue.main.async {
-                        self.planets.append(contentsOf: planet)
+                    // Decode the response and set the assetImageName
+                    if var planet = try JSONDecoder().decode([Planet].self, from: data).first {
+                        planet.assetImageName = self?.getAssetImageName(for: planetName) ?? "default_planet_image" // Assign the correct image name
+                        
+                        DispatchQueue.main.async {
+                            self?.planets.append(planet)
+                        }
                     }
                 } catch {
-                    print("Error decoding data for \(planetName): \(error)")
+                    print("Error decoding data for \(planetName): \(error.localizedDescription)")
                 }
             }.resume()
         }
+    }
+
+    // Helper function to map planet names to image assets
+    private func getAssetImageName(for planetName: String) -> String {
+        let imageMapping = [
+            "Mercury": "Mercury",
+            "Venus": "Venus",
+            "Earth": "Earth", //Eearth_image
+            "Mars": "Mars",
+            "Jupiter": "Jupiter",
+            "Saturn": "Saturn",
+            "Uranus": "Uranus",
+            "Neptune": "Neptune",
+            "Pluto": "Pluto"
+        ]
+        
+        return imageMapping[planetName] ?? "default_planet_image"
     }
 
     // Fetch exoplanets dynamically using min_radius

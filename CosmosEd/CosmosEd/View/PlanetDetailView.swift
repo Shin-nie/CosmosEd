@@ -7,14 +7,25 @@ import SwiftUI
 
 struct PlanetDetailView: View {
     //  MARK: - Properties
-    init() {
+    @ObservedObject var infoAPI: InfoAPI // Fetch Planet data
+    @ObservedObject var viewModel: PlanetViewModel   //  Viewmodel to track selected planet
+
+    
+    //  MARK: - INITALISATION
+    init(infoAPI: InfoAPI, viewModel: PlanetViewModel ){
+        
+        //  Initialise viewModel
+        self.viewModel = viewModel
+        self.infoAPI = infoAPI
+        
+        // TO TRANSPARENT THE NAVIAGTION BACKCROUND
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-
+    
     //  MARK: - Body
     var body: some View {
         ZStack {
@@ -24,11 +35,28 @@ struct PlanetDetailView: View {
                     
                     //  MARK: INFORMATION SECTION
                     // NavigationLink wrapping both SectionHeader and GeneralInfoCard
-                    NavigationLink(destination: PlanetInfoView()) {
+                    NavigationLink(destination: PlanetInfoView(infoAPI: infoAPI, viewModel: PlanetViewModel())) {
                         VStack {
                             SectionHeader(iconName: "info.circle", title: "General Information")
-                            GeneralInfoCard(name: "Mercury", mass: "0.000174", period: "88")
-
+                            
+                            if infoAPI.planets.isEmpty {
+//                                ProgressView()
+                                Text("Loading Planets...")
+                                    .font(.title)
+                                    .padding()
+                                    .foregroundStyle(Color(hex: 0xc7c7cc))
+                                
+                            } else {
+                                if let selectedPlanet = infoAPI.planets.first(where: { $0.name == viewModel.currentPlanet }) {
+                                    GeneralInfoCard(planet: selectedPlanet)
+                                    //                            } else {
+                                    //                                Text("No planet data available")
+                                    //                                    .foregroundColor(.red)
+                                    //                                    .font(.title)
+                                    //                                    .padding()
+                                    //                            }
+                                }
+                            }
                         }
                     }
                     
@@ -49,13 +77,18 @@ struct PlanetDetailView: View {
                     
                     //  MARK: IMAGE SECTION
                     // Images Section
-                    NavigationLink (destination: ImageView()) {
+                    NavigationLink (destination: ImageView(viewModel: PlanetViewModel())) {
                         VStack {
                             SectionHeader(iconName: "photo.on.rectangle.angled", title: "Image")
                             MediaView(imageName: "MercuryImage")
                         }
                     }
                 }// End of ScrollView
+                
+                //  MARK: Uncomment this to fetch data
+                .onAppear {
+                    infoAPI.fetchSolarSystemPlanets() // Call the API on view load
+                }
             }// End of VStack
         }// End of ZStack
     }
@@ -66,7 +99,7 @@ struct PlanetDetailView: View {
             .frame(width: 360, height: 0.6)
             .background(Color(hex: 0xaeaeb2))
             .padding(.vertical, 15)
-//            .padding()
+        //            .padding()
     }
     
     // MARK: - Background Color Theme
@@ -90,7 +123,7 @@ struct PlanetDetailView: View {
 struct SectionHeader: View {
     let iconName: String
     let title: String
-
+    
     var body: some View {
         HStack(spacing: 5) {
             Image(systemName: iconName)
@@ -115,10 +148,10 @@ struct SectionHeader: View {
 
 // MARK: - General Info Card
 struct GeneralInfoCard: View {
-    let name: String
-    let mass: String
-    let period: String
-
+    
+    //  MARK: Accept a Planet object instead of hardcoded value
+    let planet: Planet
+    
     var body: some View {
         HStack {
             ZStack {
@@ -132,7 +165,7 @@ struct GeneralInfoCard: View {
                     )
                 
                 VStack(alignment: .leading) {
-                    Text(name)
+                    Text(planet.name)
                         .font(.system(size: 25, weight: .medium, design: .rounded))
                         .tracking(2.0)
                         .padding(12)
@@ -141,10 +174,10 @@ struct GeneralInfoCard: View {
                         .background(Color(hex: 0xaeaeb2))
                         .cornerRadius(32, corners: [.topLeft, .topRight])
                         .offset(y: -15)
-
+                    
                     VStack(alignment: .leading, spacing: 18) {
-                        InfoRow(iconName: "scalemass.fill", label: "mass", value: mass)
-                        InfoRow(iconName: "circle.dotted.and.circle", label: "Period", value: period)
+                        InfoRow(iconName: "scalemass.fill", label: "mass", value: "\(planet.mass ?? 0)")
+                        InfoRow(iconName: "circle.dotted.and.circle", label: "Period", value: "\(planet.period ?? 0)")
                     }
                     .padding(.horizontal, 8)
                 }
@@ -166,7 +199,7 @@ struct InfoRow: View {
     let iconName: String
     let label: String
     let value: String
-
+    
     var body: some View {
         HStack {
             Image(systemName: iconName)
@@ -189,7 +222,7 @@ struct InfoRow: View {
 struct MediaView: View {
     let imageName: String
     var iconOverlay: String? = nil
-
+    
     var body: some View {
         ZStack {
             Image(imageName)
@@ -204,7 +237,7 @@ struct MediaView: View {
                 )
                 .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
                 .padding()
-
+            
             if let iconOverlay = iconOverlay {
                 Image(systemName: iconOverlay)
                     .font(.system(size: 50, weight: .regular))
@@ -218,6 +251,6 @@ struct MediaView: View {
 // MARK: - Preview
 #Preview {
     NavigationStack {
-        PlanetDetailView()
+        PlanetDetailView(infoAPI: InfoAPI(),viewModel: PlanetViewModel())
     }
 }
