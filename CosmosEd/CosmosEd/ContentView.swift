@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var geo: CGSize = .zero
     @State private var selection_mhx: String = "X Axis"
     
-    @ObservedObject var planetVM = PlanetViewModel()
+    @ObservedObject var planetVM: PlanetViewModel;
     
     //  MARK: Use GeometryReader to track the position of each planet card.
     //  Update PlanetViewModel‘s currentPlanet based on the card’s position relative to the ScrollView
@@ -225,6 +225,6 @@ extension View {
 //  MARK: - PREVIEW
 #Preview {
     NavigationStack {
-        ContentView()
+        ContentView(planetVM: PlanetViewModel())
     }
 }

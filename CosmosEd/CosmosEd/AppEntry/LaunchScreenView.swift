@@ -15,13 +15,16 @@ struct LaunchScreenView: View {
     //STATE variable to control the opacity of the view
     @State private var opacity = 0.5
     
+    //  APP ViewModel
+    @ObservedObject private var viewModel: PlanetViewModel = PlanetViewModel()
+    
     //LAUNCH SCREEN VIEW
     var body: some View {
         ZStack {
             BGM_Color
             //Navigates to the APP ENTRY VIEW after the LAUNCH SCREEN
             if isActive {
-                ContentView()
+                ContentView(planetVM: viewModel)
             } else {
                 VStack {
                     appLogo
@@ -45,7 +48,11 @@ struct LaunchScreenView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            viewModel.initialisedPlanet()
+        })
     }
+    
     
     //APP LOGO Appearance
     var appLogo: some View {

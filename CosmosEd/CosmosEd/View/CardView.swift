@@ -40,24 +40,48 @@ struct CardView: View {
                     Text(flashcard.category)
                         .textStyle(Footnote___Bold())
                     
-                    Button(action: {
-                        isEditing.toggle()
-                    }) {
-                        Text(isEditing ? "Done" : "Edit")
-                            .font(.caption)
-                            .foregroundColor(.blue)
-                            .padding()
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            isEditing.toggle()
+                        }) {
+                            if(isEditing){
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.green)
+                                    .padding()
+                                    .background(.green.opacity(0.2),
+                                                in: Circle())
+                            }
+                            else{
+                                Image(systemName: "pencil")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.blue)
+                                    .padding()
+                                    .background(.blue.opacity(0.1),
+                                                in: Circle())
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        // Delete button
+                        Button(action: {
+                            deleteAction() // Call delete action when pressed
+                        }) {
+                            Image(systemName: "trash")
+                                .font(.system(size: 18))
+                                .foregroundColor(.red)
+                                .padding()
+                                .background(.red.opacity(0.15),
+                                            in: Circle())
+                        }
+                        
+                        Spacer()
                     }
                     
-                    // Delete button
-                    Button(action: {
-                        deleteAction() // Call delete action when pressed
-                    }) {
-                        Text("Delete")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 320, alignment: .center)
@@ -95,24 +119,48 @@ struct CardView: View {
                     Text(flashcard.category)
                         .textStyle(Footnote___Bold())
                     
-                    Button(action: {
-                        isEditing.toggle()
-                    }) {
-                        Text(isEditing ? "Done" : "Edit")
-                            .font(.caption)
-                            .foregroundColor(.blue)
-                            .padding()
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            isEditing.toggle()
+                        }) {
+                            if(isEditing){
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.green)
+                                    .padding()
+                                    .background(.green.opacity(0.2),
+                                                in: Circle())
+                            }
+                            else{
+                                Image(systemName: "pencil")
+                                    .font(.system(size: 18))
+                                    .foregroundColor(.blue)
+                                    .padding()
+                                    .background(.blue.opacity(0.1),
+                                                in: Circle())
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        // Delete button
+                        Button(action: {
+                            deleteAction() // Call delete action when pressed
+                        }) {
+                            Image(systemName: "trash")
+                                .font(.system(size: 18))
+                                .foregroundColor(.red)
+                                .padding()
+                                .background(.red.opacity(0.15),
+                                            in: Circle())
+                        }
+                        
+                        Spacer()
                     }
                     
-                    // Delete button
-                    Button(action: {
-                        deleteAction() // Call delete action when pressed
-                    }) {
-                        Text("Delete")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(height: 320, alignment: .center)

@@ -35,7 +35,7 @@ struct PlanetDetailView: View {
                     
                     //  MARK: INFORMATION SECTION
                     // NavigationLink wrapping both SectionHeader and GeneralInfoCard
-                    NavigationLink(destination: PlanetInfoView(infoAPI: infoAPI, viewModel: PlanetViewModel())) {
+                    NavigationLink(destination: PlanetInfoView(infoAPI: infoAPI, viewModel: viewModel)) {
                         VStack {
                             SectionHeader(iconName: "info.circle", title: "General Information")
                             
