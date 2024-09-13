@@ -80,15 +80,23 @@ struct ImageView: View {
                     ForEach(filteredPlanets, id: \.data[0].nasaID) { item in
                         
                         //  CAS
-                        VStack(alignment: .leading) {
-                            
+                        
+    
+                        if item.href.contains("/image/"){
+                            VStack(alignment: .leading) {
+                                //  Display Media Title
                                 Text(item.data[0].title)
-                                    .font(.headline)
+                                    .foregroundStyle(.white)
+                                    .opacity(0.8)
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal)
                                 
                                 Text("Date: \(item.data[0].dateCreated)")
+                                    .foregroundStyle(.white)
                                     .font(.footnote)
-    
-                            if item.href.contains("/image/"){
+                                    .fontWeight(.light)
+                                    .padding(.horizontal)
                                 
                                 //  Display image
                                 if let link = item.links?.first(where: { $0.render == "image" || $0.href.hasSuffix(".jpg") }) {
@@ -110,6 +118,7 @@ struct ImageView: View {
                                     }
                                 }
                             }
+                            .padding(.vertical)
                         }
                     }
                     
@@ -123,9 +132,9 @@ struct ImageView: View {
             
             
             //  MARK: Uncomment this one to fetch Data
-//            .onAppear {
-//                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet) // Example query
-//            }
+            .onAppear {
+                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet)
+            }
             
         }
     }

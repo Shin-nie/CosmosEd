@@ -66,7 +66,7 @@ struct PlanetDetailView: View {
                     // Videos Section
                     
                     //  MARK: nho pass viewModel lai dang hoang
-                    NavigationLink(destination: VideoView(viewModel: PlanetViewModel())) {
+                    NavigationLink(destination: VideoView(viewModel: viewModel)) {
                         VStack {
                             SectionHeader(iconName: "play.rectangle.fill", title: "Videos")
                             MediaView(imageName: "mercuryNasa", iconOverlay: "arrowtriangle.forward.circle.fill")
@@ -77,7 +77,7 @@ struct PlanetDetailView: View {
                     
                     //  MARK: IMAGE SECTION
                     // Images Section
-                    NavigationLink (destination: ImageView(viewModel: PlanetViewModel())) {
+                    NavigationLink (destination: ImageView(viewModel: viewModel)) {
                         VStack {
                             SectionHeader(iconName: "photo.on.rectangle.angled", title: "Image")
                             MediaView(imageName: "MercuryImage")
@@ -183,7 +183,7 @@ struct GeneralInfoCard: View {
                 }
                 .padding(12)
             }
-            Image("Mercury")
+            Image(planet.name)
                 .resizable()
                 .frame(width: 130, height: 130)
                 .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.22), radius: 34, x: 0, y: -16)

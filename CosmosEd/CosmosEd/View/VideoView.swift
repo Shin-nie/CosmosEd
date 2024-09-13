@@ -87,39 +87,45 @@ struct VideoView: View {
                         //  CAS
                         VStack(alignment: .leading) {
                             
-                            //  Media Title
-                            Text(item.data[0].title)
-                                .font(.headline)
-                            
-                            Text("Date: \(item.data[0].dateCreated)")
-                                .font(.footnote)
-                            
                             if item.href.contains("/image/"){
                                 
                                 //  Display image
-                                if let link = item.links?.first(where: { $0.render == "image" || $0.href.hasSuffix(".jpg") }) {
-                                    AsyncImage(url: URL(string: link.href)) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 360, height: 200)
-                                            .cornerRadius(30)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 30)
-                                                    .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
-                                            )
-                                            .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
-                                            .padding()
-                                    } placeholder: {
-                                        ProgressView()
-                                        // Shows a loading spinner while the image is loading
-                                    }
-                                }
+//                                if let link = item.links?.first(where: { $0.render == "image" || $0.href.hasSuffix(".jpg") }) {
+//                                    AsyncImage(url: URL(string: link.href)) { image in
+//                                        image
+//                                            .resizable()
+//                                            .aspectRatio(contentMode: .fill)
+//                                            .frame(width: 360, height: 200)
+//                                            .cornerRadius(30)
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 30)
+//                                                    .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
+//                                            )
+//                                            .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
+//                                            .padding()
+//                                    } placeholder: {
+//                                        ProgressView()
+//                                        // Shows a loading spinner while the image is loading
+//                                    }
+//                                }
                             }
                             
                             
                             // Display video
                             if item.href.contains("/video/"){
+                                //  Media Title
+                                Text(item.data[0].title)
+                                    .foregroundStyle(.white)
+                                    .opacity(0.8)
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal)
+                                
+                                Text("Date: \(item.data[0].dateCreated)")
+                                    .foregroundStyle(.white)
+                                    .font(.footnote)
+                                    .fontWeight(.light)
+                                    .padding(.horizontal)
                                 
                                 VideoPlayer(player: AVPlayer(url: URL(string: convertToHTTPS(urlString: "https://images-assets.nasa.gov/video/\(item.data[0].nasaID)/\(item.data[0].nasaID)~mobile.mp4"))!))
 
@@ -147,9 +153,9 @@ struct VideoView: View {
             .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
             
 //             MARK: Uncomment this one to fetch Data
-//            .onAppear {
-//                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet) // Example query
-//            }
+            .onAppear {
+                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet)
+            }
             
         }
     }

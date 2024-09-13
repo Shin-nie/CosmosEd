@@ -84,7 +84,7 @@ struct ContentView: View {
                     
                     //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
                     // Wrap "General Information" with NavigationLink
-                    NavigationLink(destination: PlanetDetailView(infoAPI: InfoAPI(), viewModel: PlanetViewModel())) {
+                    NavigationLink(destination: PlanetDetailView(infoAPI: InfoAPI(), viewModel: planetVM)) {
                         bottomMenuItem(title: "Planet Information", systemImageName: "aqi.medium")
                     }
                     
@@ -127,6 +127,7 @@ struct ContentView: View {
             if abs(cardMidX - screenCenterX) < 100 { // Tweak this value if needed
                 if planetVM.currentPlanet != planet.name {
                     planetVM.updateCurrentPlanet(to: planet)
+                    print(planetVM.currentPlanet);
                 }
             }
         }
