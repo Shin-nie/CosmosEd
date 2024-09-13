@@ -13,9 +13,6 @@ import Foundation
 class PlanetViewModel: ObservableObject {
     
     @Published var currentPlanet: String = "Jupiter" // Default planet
-    
-    @Published var selectedPlanet: Planet? // Store the currently selected planet
-    
     // Add a list of planets with name and image
     @Published var planets: [Planet] = [
         Planet(name: "Mercury", mass: nil, radius: nil, period: nil, semi_major_axis: nil, temperature: nil, distance_light_year: nil, host_star_mass: nil, host_star_temperature: nil, assetImageName: "Mercury"),
@@ -26,6 +23,5 @@ class PlanetViewModel: ObservableObject {
     // Update the current planet name
     func updateCurrentPlanet(to planet: Planet) {
         self.currentPlanet = planet.name
-        self.selectedPlanet = planet // Set selected planet here
     }
 }
