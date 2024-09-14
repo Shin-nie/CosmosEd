@@ -6,7 +6,9 @@ import Foundation
 import SwiftUI
 
 //  MARK: Step 3: Implement Inheritance for Specialized Flashcards
-//  If you want to manage different types of flashcards, you can create subclasses of Flashcard. For example, you might have QuizFlashcard or VocabularyFlashcard that inherit from the base Flashcard class.
+//  If want to manage different types of flashcards
+//  can create subclasses of Flashcard.
+//  For example, might have QuizFlashcard or VocabularyFlashcard that inherit from the base Flashcard class.
 
 class QuizFlashcard: Flashcard {
     var correctAnswer: String

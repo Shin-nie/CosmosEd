@@ -42,6 +42,8 @@ struct FlashcardView: View {
                                 }
                                 .id(flashcard.id) // Give each flashcard an id
                             }
+                            //  Make ScrollView not appear the line
+                            .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                         }
                         .onChange(of: viewModel.flashcards.count) { _ in
                             // Scroll to the newly added flashcard

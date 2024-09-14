@@ -59,6 +59,6 @@ struct Planet: Codable, Identifiable {
 }
 
 //  MARK: • The assetImageName is now a computed property that derives from the name field of the planet. 
-//  MARK: So if you have images named like “Mercury.png”, “Earth.png”, etc., this will work seamlessly.
+//  MARK:   if have images named like “Mercury.png”, “Earth.png”, etc., this will work seamlessly.
 
 

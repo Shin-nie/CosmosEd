@@ -38,9 +38,10 @@ struct PlanetDetailView: View {
                     NavigationLink(destination: PlanetInfoView(infoAPI: infoAPI, viewModel: viewModel)) {
                         VStack {
                             SectionHeader(iconName: "info.circle", title: "General Information", trailingIconName: "chevron.forward" )
+                                .padding(.horizontal, 10)
                             
                             if infoAPI.planets.isEmpty {
-//                                ProgressView()
+                                
                                 Text("Loading Planets...")
                                     .font(.title)
                                     .padding()

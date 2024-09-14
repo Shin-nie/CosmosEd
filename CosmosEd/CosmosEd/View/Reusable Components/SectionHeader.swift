@@ -27,7 +27,7 @@ struct SectionHeader: View {
                 .font(.system(size: 20, weight: .semibold))
                 .foregroundStyle(Color(hex: 0x8e8e93))
         }
-        .padding(.horizontal, 2)
+        .padding(.horizontal, 8)
         .padding()
     }
 }

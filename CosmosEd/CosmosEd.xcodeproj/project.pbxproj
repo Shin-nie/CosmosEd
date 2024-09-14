@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		490803D32C9142AA0033281E /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490803D22C9142AA0033281E /* LaunchScreenView.swift */; };
 		490804132C9194AF0033281E /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490804122C9194AF0033281E /* VideoView.swift */; };
 		490804152C9197B90033281E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490804142C9197B90033281E /* ImageView.swift */; };
 		496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371022C8C260C009BB71E /* PlanetInfoView.swift */; };
@@ -22,6 +21,13 @@
 		49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F22C9593C40084B767 /* AllPlanet.swift */; };
 		49DE14F92C9595210084B767 /* IntroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F82C9595210084B767 /* IntroView2.swift */; };
 		49DE14FB2C95C7810084B767 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14FA2C95C7810084B767 /* Testing.swift */; };
+		49DE15042C9602960084B767 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE15032C9602960084B767 /* LaunchScreenView.swift */; };
+		49DE15092C9603A20084B767 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE15082C9603A20084B767 /* Constants.swift */; };
+		49DE150D2C9604200084B767 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE150C2C9604200084B767 /* LottieView.swift */; };
+		49DE15102C9604810084B767 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 49DE150F2C9604810084B767 /* Lottie */; };
+		49DE15122C9604F80084B767 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE15112C9604F80084B767 /* WelcomeView.swift */; };
+		49DE15142C960D190084B767 /* Animation - 1726334676791.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DE15132C960D190084B767 /* Animation - 1726334676791.json */; };
+		49DE15162C960D4A0084B767 /* Animation - 1726338420549.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DE15152C960D490084B767 /* Animation - 1726338420549.json */; };
 		49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE12C88166D00D30092 /* CosmosEdApp.swift */; };
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
 		49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE52C88166E00D30092 /* Assets.xcassets */; };
@@ -29,12 +35,10 @@
 		49E8584E2C89749D005352F1 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584D2C89749D005352F1 /* Planet.swift */; };
 		49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetViewModel.swift */; };
 		49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858532C8976AA005352F1 /* PlanetDetailView.swift */; };
-		49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858552C8976B5005352F1 /* PlanetRow.swift */; };
 		DD63F3532C93306900E38C45 /* API Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD63F3522C93306900E38C45 /* API Handler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		490803D22C9142AA0033281E /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		490804122C9194AF0033281E /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		490804142C9197B90033281E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		496371022C8C260C009BB71E /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,12 @@
 		49DE14F22C9593C40084B767 /* AllPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlanet.swift; sourceTree = "<group>"; };
 		49DE14F82C9595210084B767 /* IntroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView2.swift; sourceTree = "<group>"; };
 		49DE14FA2C95C7810084B767 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		49DE15032C9602960084B767 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		49DE15082C9603A20084B767 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		49DE150C2C9604200084B767 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		49DE15112C9604F80084B767 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		49DE15132C960D190084B767 /* Animation - 1726334676791.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation - 1726334676791.json"; path = "../Animation - 1726334676791.json"; sourceTree = "<group>"; };
+		49DE15152C960D490084B767 /* Animation - 1726338420549.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1726338420549.json"; sourceTree = "<group>"; };
 		49E63EDE2C88166D00D30092 /* CosmosEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E63EE12C88166D00D30092 /* CosmosEdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosEdApp.swift; sourceTree = "<group>"; };
 		49E63EE32C88166D00D30092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,7 +67,6 @@
 		49E8584D2C89749D005352F1 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		49E858512C89754A005352F1 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
 		49E858532C8976AA005352F1 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
-		49E858552C8976B5005352F1 /* PlanetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRow.swift; sourceTree = "<group>"; };
 		DD63F3522C93306900E38C45 /* API Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Handler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,20 +75,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DE15102C9604810084B767 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		490803D02C9142870033281E /* AppEntry */ = {
-			isa = PBXGroup;
-			children = (
-				490803D22C9142AA0033281E /* LaunchScreenView.swift */,
-			);
-			path = AppEntry;
-			sourceTree = "<group>";
-		};
 		49CF4D272C88176100FE6D33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +105,11 @@
 		49CF4D2A2C88177800FE6D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				49DE14EB2C9573630084B767 /* Reusable Components */,
 				49E858532C8976AA005352F1 /* PlanetDetailView.swift */,
-				496371022C8C260C009BB71E /* PlanetInfoView.swift */,
-				490804122C9194AF0033281E /* VideoView.swift */,
-				490804142C9197B90033281E /* ImageView.swift */,
-				49DE14F22C9593C40084B767 /* AllPlanet.swift */,
-				49E858552C8976B5005352F1 /* PlanetRow.swift */,
+				49DE15072C96037B0084B767 /* Lottie */,
+				49DE15022C96027B0084B767 /* AppEntry */,
+				49DE14EB2C9573630084B767 /* Reusable Components */,
+				49DE15062C96030B0084B767 /* PlanetView */,
 				49DE14F52C9594460084B767 /* Flashcards */,
 			);
 			path = View;
@@ -136,6 +136,37 @@
 			path = Flashcards;
 			sourceTree = "<group>";
 		};
+		49DE15022C96027B0084B767 /* AppEntry */ = {
+			isa = PBXGroup;
+			children = (
+				49DE15032C9602960084B767 /* LaunchScreenView.swift */,
+				49DE15112C9604F80084B767 /* WelcomeView.swift */,
+			);
+			path = AppEntry;
+			sourceTree = "<group>";
+		};
+		49DE15062C96030B0084B767 /* PlanetView */ = {
+			isa = PBXGroup;
+			children = (
+				496371022C8C260C009BB71E /* PlanetInfoView.swift */,
+				490804122C9194AF0033281E /* VideoView.swift */,
+				490804142C9197B90033281E /* ImageView.swift */,
+				49DE14F22C9593C40084B767 /* AllPlanet.swift */,
+			);
+			path = PlanetView;
+			sourceTree = "<group>";
+		};
+		49DE15072C96037B0084B767 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				49DE15152C960D490084B767 /* Animation - 1726338420549.json */,
+				49DE15132C960D190084B767 /* Animation - 1726334676791.json */,
+				49DE15082C9603A20084B767 /* Constants.swift */,
+				49DE150C2C9604200084B767 /* LottieView.swift */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		49E63ED52C88166D00D30092 = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +188,6 @@
 			children = (
 				49E63EE12C88166D00D30092 /* CosmosEdApp.swift */,
 				49E63EE32C88166D00D30092 /* ContentView.swift */,
-				490803D02C9142870033281E /* AppEntry */,
 				49CF4D2A2C88177800FE6D33 /* View */,
 				49CF4D282C88176700FE6D33 /* ViewModel */,
 				49CF4D272C88176100FE6D33 /* Model */,
@@ -191,6 +221,9 @@
 			dependencies = (
 			);
 			name = CosmosEd;
+			packageProductDependencies = (
+				49DE150F2C9604810084B767 /* Lottie */,
+			);
 			productName = CosmosEd;
 			productReference = 49E63EDE2C88166D00D30092 /* CosmosEd.app */;
 			productType = "com.apple.product-type.application";
@@ -219,6 +252,9 @@
 				Base,
 			);
 			mainGroup = 49E63ED52C88166D00D30092;
+			packageReferences = (
+				49DE150E2C9604800084B767 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 49E63EDF2C88166D00D30092 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +269,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DE15142C960D190084B767 /* Animation - 1726334676791.json in Resources */,
+				49DE15162C960D4A0084B767 /* Animation - 1726338420549.json in Resources */,
 				49E63EE92C88166E00D30092 /* Preview Assets.xcassets in Resources */,
 				49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */,
 			);
@@ -246,13 +284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E8584E2C89749D005352F1 /* Planet.swift in Sources */,
+				49DE15092C9603A20084B767 /* Constants.swift in Sources */,
 				49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */,
 				49DE14F92C9595210084B767 /* IntroView2.swift in Sources */,
 				496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */,
 				DD63F3532C93306900E38C45 /* API Handler.swift in Sources */,
 				490804132C9194AF0033281E /* VideoView.swift in Sources */,
 				490804152C9197B90033281E /* ImageView.swift in Sources */,
-				490803D32C9142AA0033281E /* LaunchScreenView.swift in Sources */,
+				49DE15042C9602960084B767 /* LaunchScreenView.swift in Sources */,
 				496371112C8CD518009BB71E /* FlashcardView.swift in Sources */,
 				49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */,
 				4963710B2C8CD0D4009BB71E /* QuizFlashcard.swift in Sources */,
@@ -263,8 +302,9 @@
 				49E63EE42C88166D00D30092 /* ContentView.swift in Sources */,
 				49DE14EF2C95861E0084B767 /* SectionHeader.swift in Sources */,
 				49DE14ED2C9576970084B767 /* SearchBar.swift in Sources */,
+				49DE15122C9604F80084B767 /* WelcomeView.swift in Sources */,
 				49DE14FB2C95C7810084B767 /* Testing.swift in Sources */,
-				49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */,
+				49DE150D2C9604200084B767 /* LottieView.swift in Sources */,
 				49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */,
 				49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */,
 			);
@@ -472,6 +512,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49DE150E2C9604800084B767 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49DE150F2C9604810084B767 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49DE150E2C9604800084B767 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49E63ED62C88166D00D30092 /* Project object */;
 }

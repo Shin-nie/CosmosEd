@@ -280,7 +280,6 @@ struct PlanetInfoView: View {
                             } // End of ZStack 3
                         }
 //                        .offset(y: 40)
-                        
                     }
                 }
             }// (I) End Of VSTACK2 - GENERAL INFO

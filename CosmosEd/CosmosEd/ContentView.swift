@@ -18,6 +18,16 @@ struct ContentView: View {
     @State var geo: CGSize = .zero
     @State private var selection_mhx: String = "X Axis"
     
+    
+    // state variables for interactive Image
+    @State private var scale: CGFloat = 1.0
+    @State private var rotation: Angle = .degrees(0)
+    @State private var isTapped = false
+    @State private var floatingOffset: CGFloat = 0.0
+    @State private var floatingDirection: Bool = true // To toggle direction
+
+    
+    
     @ObservedObject var planetVM: PlanetViewModel;
     
     //  MARK: Use GeometryReader to track the position of each planet card.
@@ -58,6 +68,7 @@ struct ContentView: View {
                             .foregroundStyle(.white)
                             .opacity(0.3)
                             .frame(maxWidth: .infinity, alignment: .center)
+//                            .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                         
                         // Scroll the planets horizontally
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -66,7 +77,7 @@ struct ContentView: View {
                                     GeometryReader { geo in
                                         planetCard(planet: planet)
                                             .onChange(of: geo.frame(in: .global).midX) { newX in
-                                                updateCurrentPlanetIfNeeded(for: planet, geo: geo)
+                                                updateCurrentPlanet(for: planet, geo: geo)
                                             }
                                     }
                                     .frame(width: 390, height: 400) // Set frame for each card
@@ -74,6 +85,7 @@ struct ContentView: View {
                             }
                         }
                     }
+
                 }
                 
                 // Bottom Menu
@@ -124,7 +136,7 @@ struct ContentView: View {
     
     
     // MARK: Function to update the current planet name based on scroll position
-        func updateCurrentPlanetIfNeeded(for planet: Planet, geo: GeometryProxy) {
+        func updateCurrentPlanet(for planet: Planet, geo: GeometryProxy) {
             let screenWidth = UIScreen.main.bounds.width
             let cardMidX = geo.frame(in: .global).midX
             let screenCenterX = screenWidth / 2
@@ -138,31 +150,53 @@ struct ContentView: View {
             }
         }
     
-    // Function to generate a planet card
+    // Function to generate a planet card with gestures applied to the image
     func planetCard(planet: Planet) -> some View {
         VStack {
-//            Text(planet.name)
-//                .font(.custom("SFProDisplay-Regular", size: 17))
-//                .foregroundStyle(.white)
-//                .opacity(0.3)
-//                .frame(maxWidth: .infinity, alignment: .center)
-            
-            Text("")
-                .padding(.top, 20)
-                .font(.custom("SFProDisplay-Regular", size: 17))
-                .foregroundStyle(.white)
-                .opacity(0.3)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            
             Image(planet.assetImageName)
                 .resizable()
                 .frame(width: 300, height: 300)
-            
+                .scaleEffect(scale) // Apply scale effect
+                .rotationEffect(rotation) // Apply rotation effect
+                .offset(y: floatingOffset) // Apply vertical floating effect
+                .onAppear {
+                    startFloating() // Start the floating effect when the image appears
+                }
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = value // Pinch-to-zoom gesture
+                        }
+                )
+                .simultaneousGesture(
+                    RotationGesture()
+                        .onChanged { angle in
+                            rotation = angle // Rotation gesture
+                        }
+                )
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isTapped.toggle()
+                        scale = isTapped ? 1.2 : 1.0 // Animate scale on tap
+                    }
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred() // Haptic feedback on tap
+                }
                 .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.15), radius: 10, x: 0, y: -16)
                 .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.25), radius: 5, x: 0, y: 2)
         }
         .frame(width: 380, alignment: .center)
+        .offset(y: 60)
+    }
+
+    // Function to start the floating effect
+    func startFloating() {
+        withAnimation(
+            Animation.easeInOut(duration: 1.5)
+                .repeatForever(autoreverses: true)
+        ) {
+            floatingOffset = floatingDirection ? -15 : 15 // Switch between floating up and down
+            floatingDirection.toggle() // Toggle direction for next animation
+        }
     }
     
     // Function to generate a bottom menu item

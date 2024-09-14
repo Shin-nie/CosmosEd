@@ -24,7 +24,9 @@ struct LaunchScreenView: View {
             BGM_Color
             //Navigates to the APP ENTRY VIEW after the LAUNCH SCREEN
             if isActive {
-                ContentView(planetVM: viewModel)
+//                ContentView(planetVM: viewModel)
+                WelcomeView()
+                    .background(.white)
             } else {
                 VStack {
                     appLogo

@@ -7,7 +7,7 @@ import AVKit
 import Foundation
 
 //  MARK: - Step 1: Create a model for the response
-//  You will need to create a MediaObject struct to parse the JSON response into Swift objects.
+//  Create a MediaObject struct to parse the JSON response into Swift objects.
 
 struct MediaObject: Codable {
     let nasaID: String
@@ -35,7 +35,7 @@ struct MediaObjectItem: Codable {
     let links: [MediaObjectLink]?
 }
 
-//  used to handle the media URLs (href), and render tells us whether it’s an image or video.
+//  used to handle the media URLs (href), and render tells whether it’s an image or video.
 struct MediaObjectLink: Codable {
     let href: String
     let rel: String
@@ -52,8 +52,9 @@ struct MediaObjectCollection: Codable {
 
 
 //  MARK: - Step 2: Make an API request
-//  You will use URLSession to fetch data from the API. Make sure to handle errors and decode the JSON response properly.
-//  Now, let’s update the API call to extract image and video links for each MediaObjectItem.
+//  use URLSession to fetch data from the API. 
+//  Make sure to handle errors and decode the JSON response properly.
+//  update the API call to extract image and video links for each MediaObjectItem.
 
 class MediaObjectAPI: ObservableObject {
     @Published var planets = [MediaObjectItem]()
@@ -220,7 +221,7 @@ class InfoAPI: ObservableObject {
                 DispatchQueue.main.async {
                     self.planets.append(contentsOf: planets)
                     if planets.count == self.limit {
-                        // If we fetched the max number of planets, increase the offset and fetch more
+                        // If fetched the max number of planets, increase the offset and fetch more
                         self.offset += self.limit
                         self.fetchExoplanets() // Fetch the next set of exoplanets
                     }
