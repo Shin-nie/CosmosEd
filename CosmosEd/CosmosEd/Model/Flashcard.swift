@@ -19,7 +19,7 @@ protocol FlashcardTask {
 
 //  MARK: Step 2: Create a Base Class for Flashcards - [ MODEL ]
 //  Next, create a base class Flashcard that conforms to the FlashcardTask protocol. This class will implement the properties & methods defined in the protocol.
-//  •  Flashcard class is responsible for managing the properties & behavior of individual flashcards.
+//  Flashcard class is responsible for managing the properties & behavior of individual flashcards.
 class Flashcard: Identifiable, Codable, FlashcardTask {
     var id = UUID()
     var frontText: String

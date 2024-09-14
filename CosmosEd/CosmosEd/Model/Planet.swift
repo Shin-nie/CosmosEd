@@ -26,7 +26,7 @@ struct Planet: Codable, Identifiable {
         case name, mass, radius, period, semi_major_axis, temperature, distance_light_year, host_star_mass, host_star_temperature
     }
 
-    // Default initializer for when you're not decoding from JSON
+    // Default initializer for when not decoding from JSON
     init(name: String, mass: Double?, radius: Double?, period: Double?, semi_major_axis: Double?, temperature: Int?, distance_light_year: Double?, host_star_mass: Double?, host_star_temperature: Int?, assetImageName: String) {
         self.name = name
         self.mass = mass

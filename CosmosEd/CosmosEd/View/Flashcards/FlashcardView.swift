@@ -26,7 +26,7 @@ struct FlashcardView: View {
                             }
                         }
                     }
-                    .padding(10)
+//                    .padding(10)
                     .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
 //                    .background(LinearGradient(gradient:
 //                                                Gradient(stops: [.init(color: Color(hex: 0x5856d6), location: 0.8), .init(color: Color(hex: 0xdbaf0), location: 1)]),

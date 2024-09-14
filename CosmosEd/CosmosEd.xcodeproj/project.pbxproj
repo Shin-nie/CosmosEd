@@ -21,6 +21,7 @@
 		49DE14F12C958C0D0084B767 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F02C958C0D0084B767 /* MediaView.swift */; };
 		49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F22C9593C40084B767 /* AllPlanet.swift */; };
 		49DE14F92C9595210084B767 /* IntroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F82C9595210084B767 /* IntroView2.swift */; };
+		49DE14FB2C95C7810084B767 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14FA2C95C7810084B767 /* Testing.swift */; };
 		49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE12C88166D00D30092 /* CosmosEdApp.swift */; };
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
 		49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE52C88166E00D30092 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		49DE14F02C958C0D0084B767 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		49DE14F22C9593C40084B767 /* AllPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlanet.swift; sourceTree = "<group>"; };
 		49DE14F82C9595210084B767 /* IntroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView2.swift; sourceTree = "<group>"; };
+		49DE14FA2C95C7810084B767 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		49E63EDE2C88166D00D30092 /* CosmosEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E63EE12C88166D00D30092 /* CosmosEdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosEdApp.swift; sourceTree = "<group>"; };
 		49E63EE32C88166D00D30092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				49DE14F82C9595210084B767 /* IntroView2.swift */,
 				4963710E2C8CD35B009BB71E /* CardView.swift */,
+				49DE14FA2C95C7810084B767 /* Testing.swift */,
 				496371102C8CD518009BB71E /* FlashcardView.swift */,
 			);
 			path = Flashcards;
@@ -260,6 +263,7 @@
 				49E63EE42C88166D00D30092 /* ContentView.swift in Sources */,
 				49DE14EF2C95861E0084B767 /* SectionHeader.swift in Sources */,
 				49DE14ED2C9576970084B767 /* SearchBar.swift in Sources */,
+				49DE14FB2C95C7810084B767 /* Testing.swift in Sources */,
 				49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */,
 				49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */,
 				49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */,

@@ -24,7 +24,7 @@ struct IntroView2: View {
                         .padding(.vertical, 5)
                         .tracking(3.0)
                     
-                    Text("Expand your knowledge of space through flashcards on planets, stars, galaxies, and more. Swipe through and test yourself!")
+                    Text("Expand your knowledge of space through flashcards on planets, stars, galaxies, and more. \nSwipe through and test yourself!")
                         .font(.system(size: 22, weight: .light, design: .rounded))
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
@@ -64,7 +64,7 @@ struct IntroView2: View {
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .fixedSize(horizontal: false, vertical: true)
-                                    Text("20 Flashcards")
+                                    Text("5 Flashcards")
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .opacity(0.4)
