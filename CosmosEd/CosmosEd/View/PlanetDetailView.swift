@@ -37,7 +37,7 @@ struct PlanetDetailView: View {
                     // NavigationLink wrapping both SectionHeader and GeneralInfoCard
                     NavigationLink(destination: PlanetInfoView(infoAPI: infoAPI, viewModel: viewModel)) {
                         VStack {
-                            SectionHeader(iconName: "info.circle", title: "General Information")
+                            SectionHeader(iconName: "info.circle", title: "General Information", trailingIconName: "chevron.forward" )
                             
                             if infoAPI.planets.isEmpty {
 //                                ProgressView()
@@ -68,7 +68,7 @@ struct PlanetDetailView: View {
                     //  MARK: nho pass viewModel lai dang hoang
                     NavigationLink(destination: VideoView(viewModel: viewModel)) {
                         VStack {
-                            SectionHeader(iconName: "play.rectangle.fill", title: "Videos")
+                            SectionHeader(iconName: "play.rectangle.fill", title: "Videos", trailingIconName: "chevron.forward")
                             MediaView(imageName: "mercuryNasa", iconOverlay: "arrowtriangle.forward.circle.fill")
                         }
                     }
@@ -79,7 +79,7 @@ struct PlanetDetailView: View {
                     // Images Section
                     NavigationLink (destination: ImageView(viewModel: viewModel)) {
                         VStack {
-                            SectionHeader(iconName: "photo.on.rectangle.angled", title: "Image")
+                            SectionHeader(iconName: "photo.on.rectangle.angled", title: "Image", trailingIconName: "chevron.forward")
                             MediaView(imageName: "MercuryImage")
                         }
                     }
@@ -116,33 +116,6 @@ struct PlanetDetailView: View {
                 endPoint: .trailing)
                 .ignoresSafeArea())
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
-    }
-}
-
-// MARK: - Section Header
-struct SectionHeader: View {
-    let iconName: String
-    let title: String
-    
-    var body: some View {
-        HStack(spacing: 5) {
-            Image(systemName: iconName)
-                .font(.system(size: 23, weight: .bold))
-                .foregroundStyle(Color(hex: 0xc7c7cc))
-                .padding(.trailing, 8)
-            
-            Text(title)
-                .font(.system(size: 27, weight: .medium, design: .rounded))
-                .tracking(2.00)
-                .foregroundStyle(Color(hex: 0xc7c7cc))
-            
-            Spacer()
-            Image(systemName: "chevron.forward")
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(Color(hex: 0x8e8e93))
-        }
-        .padding(.horizontal, 20)
-        .padding()
     }
 }
 
@@ -215,36 +188,6 @@ struct InfoRow: View {
                 .font(.system(size: 17))
                 .foregroundColor(Color(hex: 0xe5e5ea))
         }
-    }
-}
-
-// MARK: - Media View for Videos and Images
-struct MediaView: View {
-    let imageName: String
-    var iconOverlay: String? = nil
-    
-    var body: some View {
-        ZStack {
-            Image(imageName)
-                .resizable()
-                .opacity(0.7)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 360, height: 200)
-                .cornerRadius(60)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(Color(hex: 0xc7c7cc), lineWidth: 1)
-                )
-                .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
-                .padding()
-            
-            if let iconOverlay = iconOverlay {
-                Image(systemName: iconOverlay)
-                    .font(.system(size: 50, weight: .regular))
-                    .foregroundStyle(Color(UIColor.systemGray4))
-            }
-        }
-        .padding(.top, -20)
     }
 }
 

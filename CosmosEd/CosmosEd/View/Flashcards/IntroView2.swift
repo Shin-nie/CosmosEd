@@ -4,12 +4,11 @@
 
 import SwiftUI
 
-struct QuizView: View {
+struct IntroView2: View {
     @State var geo: CGSize = .zero
     //  MARK: - Body
     var body: some View {
         
-        //
         ZStack {
             //  MARK: Background Color
             BGM_Color
@@ -19,13 +18,13 @@ struct QuizView: View {
                 //  DISPLAY QUIZZES' LABEL
                 VStack() {
                     
-                    Text("Quizzes")
+                    Text("Flashcards")
                         .font(.system(size: 26, weight: .semibold, design: .rounded))
                         .foregroundStyle(Color(hex: 0xff7600))
                         .padding(.vertical, 5)
                         .tracking(3.0)
                     
-                    Text("Ready to discover the wonders of space through exciting challenges?")
+                    Text("Expand your knowledge of space through flashcards on planets, stars, galaxies, and more. Swipe through and test yourself!")
                         .font(.system(size: 22, weight: .light, design: .rounded))
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
@@ -65,7 +64,7 @@ struct QuizView: View {
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .fixedSize(horizontal: false, vertical: true)
-                                    Text("10 Question")
+                                    Text("20 Flashcards")
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .opacity(0.4)
@@ -78,7 +77,7 @@ struct QuizView: View {
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .clipped()
-                                    Text("5 minutes")
+                                    Text("None")
                                         .font(.system(size: 14))
                                         .foregroundStyle(.white)
                                         .opacity(0.4)
@@ -124,7 +123,7 @@ struct QuizView: View {
                             RoundedRectangle(cornerRadius: 32)
                                 .stroke(Color(hex: 0xd1d1d6), lineWidth: 1)
                         )
-//                        .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 10, x: 0, y: 5)
+                        //  Button Designing
                         .shadow(color: .black.opacity(0.5), radius: 4, x:6, y:9)
                         .shadow(color: .white.opacity(0.7), radius: 4, x:2, y:-5)
                         .cornerRadius(32)
@@ -172,10 +171,9 @@ extension Text {
     }
 }
 
-
 //  MARK: - Preview
 #Preview {
     NavigationStack {
-        QuizView()
+        IntroView2()
     }
 }

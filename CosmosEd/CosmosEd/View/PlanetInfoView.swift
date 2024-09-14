@@ -22,7 +22,7 @@ struct PlanetInfoView: View {
                 //  MARK: FIRST BOX
                 
                 //  DISPLAYING TITLE'S LABEL
-                SectionHeader(iconName: "info.circle", title: "General Information")
+                SectionHeader(iconName: "info.circle", title: "General Information", trailingIconName: "chevron.down")
                 
                 //  MARK: NAME SECTION
                 // Check if planets data is available
@@ -30,6 +30,8 @@ struct PlanetInfoView: View {
                     Text("Loading Planets...")
                         .font(.title)
                         .padding()
+                        .foregroundStyle(Color(hex: 0xc7c7cc))
+                    
                 } else {
                     // Iterate over the planets fetched by the API
                     if let planet = infoAPI.planets.first(where: { $0.name == viewModel.currentPlanet}) {

@@ -1,9 +1,6 @@
 //
 //  ImageView.swift
 //  CosmosEd
-//
-//  Created by Hang Vu on 11/9/2024.
-//
 
 import SwiftUI
 import AVKit
@@ -40,6 +37,11 @@ struct ImageView: View {
             ScrollView(.vertical) {
                 
                 VStack (alignment: .leading) {
+
+                    //  MARK: SearchBar for Search Input
+                    // Search bar bound to `viewModel.searchText`
+                    SearchBar(text: $searchText, placeholder: "Search for images...")
+                    
                     //  DISPLAYING TITLE'S LABEL
                     HStack(spacing: 5) {
                         Image(systemName: "photo.on.rectangle.angled")

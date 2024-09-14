@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  CosmosEd
 
-//  MARK: To achieve dynamic text updates while scrolling, you need to detect the visible planet in the ScrollView. A common approach is to use a GeometryReader to check when a planet is close to the center of the view and update the currentPlanet accordingly.
+//  MARK: To achieve dynamic text updates while scrolling, need to detect the visible planet in the ScrollView. A common approach is to use a GeometryReader to check when a planet is close to the center of the view and update the currentPlanet accordingly.
 
 
 import SwiftUI
@@ -22,7 +22,7 @@ struct ContentView: View {
     
     //  MARK: Use GeometryReader to track the position of each planet card.
     //  Update PlanetViewModel‘s currentPlanet based on the card’s position relative to the ScrollView
-//    @State private var scrollOffset: CGFloat = 0.0
+    //  @State private var scrollOffset: CGFloat = 0.0
     
     
     var body: some View {
@@ -80,7 +80,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     
                     //  MARK: Home
-                    bottomMenuItem(title: "Home", systemImageName: "house.fill")
+                    bottomMenuItem(title: "Flashcards", systemImageName: "house.fill")
                     
                     //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
                     // Wrap "General Information" with NavigationLink
@@ -89,12 +89,18 @@ struct ContentView: View {
                     }
                     
                     
-                    NavigationLink(destination: QuizView() ) {
-                        bottomMenuItem(title: "Game", systemImageName: "gamecontroller")
+                    NavigationLink(destination: IntroView2() ) {
+                        bottomMenuItem(title: "Flashcard", systemImageName: "greetingcard")
                         
                     }
                     
-                    bottomMenuItem(title: "Favorite", systemImageName: "heart.fill")
+                    NavigationLink(destination: AllPlanet(infoAPI: InfoAPI(), viewModel: PlanetViewModel())) {
+                        bottomMenuItem(title: "All Planets", systemImageName: "bubbles.and.sparkles.fill")
+                        
+                    }
+                    
+                    //  bottomMenuItem(title: "Favorite", systemImageName: "heart.fill")
+                    
                 }
                 //  FORMATTING THE NAVIGATION BUTTON SO IT DOES NOT BLUE
                 .buttonStyle(PlainButtonStyle()) // Prevents the automatic blue tint on NavigationLink

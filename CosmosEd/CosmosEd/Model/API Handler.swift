@@ -61,6 +61,7 @@ class MediaObjectAPI: ObservableObject {
     let apiKey = "c27PNpJEi5tdIgo3lBeSR0gd9e0tBNosInFbSxKq"
     let apiRoot = "https://images-api.nasa.gov/search" //https://images-api.nasa.gov/search
     
+    // Function to fetch media objects asynchronously
     func fetchMediaObjects(searchQuery: String) {
         let urlString = "\(apiRoot)?q=\(searchQuery)&media_type=image,video"
         guard let url = URL(string: urlString) else { return }
@@ -93,7 +94,7 @@ class MediaObjectAPI: ObservableObject {
     }
 }
 
-
+//  MARK: Functions
 func convertToHTTPS(urlString: String) -> String {
     // Check if the URL starts with 'http://'
     if urlString.hasPrefix("http://") {

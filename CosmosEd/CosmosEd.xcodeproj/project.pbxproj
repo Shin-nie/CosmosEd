@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		490803D32C9142AA0033281E /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490803D22C9142AA0033281E /* LaunchScreenView.swift */; };
-		490803D62C9151410033281E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490803D52C9151410033281E /* Test.swift */; };
 		490804132C9194AF0033281E /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490804122C9194AF0033281E /* VideoView.swift */; };
 		490804152C9197B90033281E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490804142C9197B90033281E /* ImageView.swift */; };
 		496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371022C8C260C009BB71E /* PlanetInfoView.swift */; };
@@ -17,14 +16,16 @@
 		4963710D2C8CD225009BB71E /* FlashcardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */; };
 		4963710F2C8CD35B009BB71E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963710E2C8CD35B009BB71E /* CardView.swift */; };
 		496371112C8CD518009BB71E /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496371102C8CD518009BB71E /* FlashcardView.swift */; };
-		4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4998E20A2C8B0F6D000A152E /* QuizView.swift */; };
-		49DE14EA2C937E370084B767 /* Test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14E92C937E370084B767 /* Test2.swift */; };
+		49DE14ED2C9576970084B767 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14EC2C9576970084B767 /* SearchBar.swift */; };
+		49DE14EF2C95861E0084B767 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14EE2C95861E0084B767 /* SectionHeader.swift */; };
+		49DE14F12C958C0D0084B767 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F02C958C0D0084B767 /* MediaView.swift */; };
+		49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F22C9593C40084B767 /* AllPlanet.swift */; };
+		49DE14F92C9595210084B767 /* IntroView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE14F82C9595210084B767 /* IntroView2.swift */; };
 		49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE12C88166D00D30092 /* CosmosEdApp.swift */; };
 		49E63EE42C88166D00D30092 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E63EE32C88166D00D30092 /* ContentView.swift */; };
 		49E63EE62C88166E00D30092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE52C88166E00D30092 /* Assets.xcassets */; };
 		49E63EE92C88166E00D30092 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E63EE82C88166E00D30092 /* Preview Assets.xcassets */; };
 		49E8584E2C89749D005352F1 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584D2C89749D005352F1 /* Planet.swift */; };
-		49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E8584F2C8974B7005352F1 /* Planetary Data.swift */; };
 		49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858512C89754A005352F1 /* PlanetViewModel.swift */; };
 		49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858532C8976AA005352F1 /* PlanetDetailView.swift */; };
 		49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E858552C8976B5005352F1 /* PlanetRow.swift */; };
@@ -33,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		490803D22C9142AA0033281E /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
-		490803D52C9151410033281E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		490804122C9194AF0033281E /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		490804142C9197B90033281E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		496371022C8C260C009BB71E /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
@@ -42,15 +42,17 @@
 		4963710C2C8CD225009BB71E /* FlashcardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardViewModel.swift; sourceTree = "<group>"; };
 		4963710E2C8CD35B009BB71E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		496371102C8CD518009BB71E /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
-		4998E20A2C8B0F6D000A152E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		49DE14E92C937E370084B767 /* Test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2.swift; sourceTree = "<group>"; };
+		49DE14EC2C9576970084B767 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		49DE14EE2C95861E0084B767 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		49DE14F02C958C0D0084B767 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
+		49DE14F22C9593C40084B767 /* AllPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlanet.swift; sourceTree = "<group>"; };
+		49DE14F82C9595210084B767 /* IntroView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView2.swift; sourceTree = "<group>"; };
 		49E63EDE2C88166D00D30092 /* CosmosEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CosmosEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E63EE12C88166D00D30092 /* CosmosEdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosEdApp.swift; sourceTree = "<group>"; };
 		49E63EE32C88166D00D30092 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		49E63EE52C88166E00D30092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E63EE82C88166E00D30092 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49E8584D2C89749D005352F1 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
-		49E8584F2C8974B7005352F1 /* Planetary Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planetary Data.swift"; sourceTree = "<group>"; };
 		49E858512C89754A005352F1 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
 		49E858532C8976AA005352F1 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
 		49E858552C8976B5005352F1 /* PlanetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRow.swift; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				49E8584D2C89749D005352F1 /* Planet.swift */,
-				49E8584F2C8974B7005352F1 /* Planetary Data.swift */,
 				496371082C8CCFBA009BB71E /* Flashcard.swift */,
 				4963710A2C8CD0D3009BB71E /* QuizFlashcard.swift */,
 				DD63F3522C93306900E38C45 /* API Handler.swift */,
@@ -100,18 +101,36 @@
 		49CF4D2A2C88177800FE6D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49DE14EB2C9573630084B767 /* Reusable Components */,
 				49E858532C8976AA005352F1 /* PlanetDetailView.swift */,
 				496371022C8C260C009BB71E /* PlanetInfoView.swift */,
 				490804122C9194AF0033281E /* VideoView.swift */,
 				490804142C9197B90033281E /* ImageView.swift */,
-				490803D52C9151410033281E /* Test.swift */,
-				49DE14E92C937E370084B767 /* Test2.swift */,
+				49DE14F22C9593C40084B767 /* AllPlanet.swift */,
 				49E858552C8976B5005352F1 /* PlanetRow.swift */,
-				4998E20A2C8B0F6D000A152E /* QuizView.swift */,
+				49DE14F52C9594460084B767 /* Flashcards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49DE14EB2C9573630084B767 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				49DE14EC2C9576970084B767 /* SearchBar.swift */,
+				49DE14EE2C95861E0084B767 /* SectionHeader.swift */,
+				49DE14F02C958C0D0084B767 /* MediaView.swift */,
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		49DE14F52C9594460084B767 /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+				49DE14F82C9595210084B767 /* IntroView2.swift */,
 				4963710E2C8CD35B009BB71E /* CardView.swift */,
 				496371102C8CD518009BB71E /* FlashcardView.swift */,
 			);
-			path = View;
+			path = Flashcards;
 			sourceTree = "<group>";
 		};
 		49E63ED52C88166D00D30092 = {
@@ -224,24 +243,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E8584E2C89749D005352F1 /* Planet.swift in Sources */,
-				49E858502C8974B7005352F1 /* Planetary Data.swift in Sources */,
-				4998E20B2C8B0F6D000A152E /* QuizView.swift in Sources */,
 				49E858522C89754A005352F1 /* PlanetViewModel.swift in Sources */,
+				49DE14F92C9595210084B767 /* IntroView2.swift in Sources */,
 				496371032C8C260C009BB71E /* PlanetInfoView.swift in Sources */,
 				DD63F3532C93306900E38C45 /* API Handler.swift in Sources */,
 				490804132C9194AF0033281E /* VideoView.swift in Sources */,
 				490804152C9197B90033281E /* ImageView.swift in Sources */,
-				49DE14EA2C937E370084B767 /* Test2.swift in Sources */,
-				490803D62C9151410033281E /* Test.swift in Sources */,
 				490803D32C9142AA0033281E /* LaunchScreenView.swift in Sources */,
 				496371112C8CD518009BB71E /* FlashcardView.swift in Sources */,
 				49E858542C8976AA005352F1 /* PlanetDetailView.swift in Sources */,
 				4963710B2C8CD0D4009BB71E /* QuizFlashcard.swift in Sources */,
 				4963710F2C8CD35B009BB71E /* CardView.swift in Sources */,
 				4963710D2C8CD225009BB71E /* FlashcardViewModel.swift in Sources */,
+				49DE14F12C958C0D0084B767 /* MediaView.swift in Sources */,
 				496371092C8CCFBA009BB71E /* Flashcard.swift in Sources */,
 				49E63EE42C88166D00D30092 /* ContentView.swift in Sources */,
+				49DE14EF2C95861E0084B767 /* SectionHeader.swift in Sources */,
+				49DE14ED2C9576970084B767 /* SearchBar.swift in Sources */,
 				49E858562C8976B5005352F1 /* PlanetRow.swift in Sources */,
+				49DE14F32C9593C40084B767 /* AllPlanet.swift in Sources */,
 				49E63EE22C88166D00D30092 /* CosmosEdApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

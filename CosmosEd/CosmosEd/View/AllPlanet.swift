@@ -2,10 +2,10 @@ import SwiftUI
 
 //  DISPLAY ALL INFORMATION
 
-struct PlanetInfoView2: View {
+struct AllPlanet: View {
     //  MARK: - Properties
     @ObservedObject var infoAPI = InfoAPI() // Observe the API class for changes
-    @ObservedObject var viewMode: PlanetViewModel   //  Viewmodel to track selected planet
+    @ObservedObject var viewModel: PlanetViewModel   //  Viewmodel to track selected planet
     
     //  MARK: - Body
     var body: some View {
@@ -20,10 +20,15 @@ struct PlanetInfoView2: View {
                     Text("Loading Planets...")
                         .font(.title)
                         .padding()
+                        .foregroundStyle(Color(hex: 0xc7c7cc))
                 } else {
                     // Iterate over the planets fetched by the API
-                    if let planet = infoAPI.planets.first(where: { $0.name == viewMode.currentPlanet}) {
-                        
+                    
+                    //  MARK: UNCOMMENT THIS ONE TO DISPLAY SINGLE PLANET
+//                    if let planet = infoAPI.planets.first(where: { $0.name == viewModel.currentPlanet}) { VStack(alignment: .leading) ..... }
+                    
+                    //  MARK: DISPLAY SINGLE PLANET
+                    ForEach(infoAPI.planets, id: \.name) { planet in
                         VStack(alignment: .leading) {
                             HStack {
                                 // Display planet image and details
@@ -104,7 +109,6 @@ struct PlanetInfoView2: View {
                             }
                         }
                         .padding(.vertical, 10)
-                        
                     }
                 }
             }
@@ -118,5 +122,5 @@ struct PlanetInfoView2: View {
 
 //  MARK: - Preview
 #Preview {
-    PlanetInfoView2(viewMode: PlanetViewModel())
+    AllPlanet(viewModel: PlanetViewModel())
 }

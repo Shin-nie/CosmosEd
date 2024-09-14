@@ -19,7 +19,6 @@ class FlashcardViewModel: ObservableObject {
         didSet {
             saveFlashcards()
             // This method is called automatically whenever items is updated, thanks to the didSet observer. - (1.2)
-            
         }
     }
     
