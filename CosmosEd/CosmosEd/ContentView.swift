@@ -80,7 +80,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     
                     //  MARK: Home
-                    bottomMenuItem(title: "Flashcards", systemImageName: "house.fill")
+                    bottomMenuItem(title: "Home", systemImageName: "house.fill")
                     
                     //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
                     // Wrap "General Information" with NavigationLink

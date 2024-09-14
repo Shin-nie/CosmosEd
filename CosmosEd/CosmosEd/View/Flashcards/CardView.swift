@@ -97,6 +97,7 @@ struct CardView: View {
                        )
                    }
                    isEditing.toggle()
+                   viewModel.saveFlashcards()
                }) {
                    Image(systemName: isEditing ? "checkmark" : "pencil")
                        .controlButtonStyle(isEditing: isEditing)
