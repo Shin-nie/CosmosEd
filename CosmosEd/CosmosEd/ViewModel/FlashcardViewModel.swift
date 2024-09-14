@@ -75,14 +75,33 @@ class FlashcardViewModel: ObservableObject {
         }
     }
     
-    // Load flashcards from UserDefaults or fallback to default flashcards
+    // Load flashcards from UserDefaults or use default flashcards only on the first run
     func loadFlashcards() {
+        
+        
+        //  clear UserDefaults to ensure the default card appear
+        //              userDefaults.removeObject(forKey: "Flashcards")
+        
         if let savedFlashcardsData = userDefaults.data(forKey: "Flashcards"),
            let decodedFlashcards = try? JSONDecoder().decode([Flashcard].self, from: savedFlashcardsData) {
-            flashcards = decodedFlashcards
-        } else {
-            // If there are no saved flashcards, use the default ones
-            flashcards = defaultFlashcards
+            
+            if(decodedFlashcards.isEmpty) {
+                //   If there is no saved flashcards, use default ones
+                flashcards = defaultFlashcards
+            }
+            else {
+                //   If there is a data in userDefault, get that data
+                flashcards = decodedFlashcards
+            }
+            
+            //                print("Loaded saved flashcards from UserDefaults")
+            //                flashcards = decodedFlashcards
+            //            } else {
+            //                // No saved flashcards, load the default ones (first run scenario)
+            //                print("No saved flashcards found, loading default flashcards")
+            //                flashcards = defaultFlashcards
+            //                saveFlashcards() // Save the default flashcards so they can be edited and persisted
+            //            }
         }
     }
 }

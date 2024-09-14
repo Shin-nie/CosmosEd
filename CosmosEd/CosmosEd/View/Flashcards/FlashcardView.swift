@@ -16,20 +16,43 @@ struct FlashcardView: View {
             BGM_Color
             
             VStack(alignment: .leading) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) {
-                        ForEach(viewModel.flashcards) { flashcard in
-                            VStack {
-                                CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
-                                    viewModel.deleteFlashcard(flashcard)
-                                })
+                //                ScrollView(.horizontal, showsIndicators: false) {
+                //                    HStack(spacing: 16) {
+                //                        ForEach(viewModel.flashcards) { flashcard in
+                //                            VStack {
+                //                                CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
+                //                                    viewModel.deleteFlashcard(flashcard)
+                //                                })
+                //                            }
+                //                        }
+                //                    }
+                ////                    .padding(10)
+                //                    .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+                //
+                //                }
+                
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(viewModel.flashcards) { flashcard in
+                                VStack {
+                                    CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
+                                        viewModel.deleteFlashcard(flashcard)
+                                    })
+                                }
+                                .id(flashcard.id) // Give each flashcard an id
+                            }
+                        }
+                        .onChange(of: viewModel.flashcards.count) { _ in
+                            // Scroll to the newly added flashcard
+                            if let lastFlashcard = viewModel.flashcards.last {
+                                proxy.scrollTo(lastFlashcard.id, anchor: .center)
                             }
                         }
                     }
-//                    .padding(10)
                     .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-
                 }
+                
                 
                 // Button to add new flashcard
                 Button(action: {

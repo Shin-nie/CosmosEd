@@ -131,6 +131,7 @@ struct CardView: View {
         VStack {
             Text(text)
                 .font(.system(size: 17, weight: .medium))
+                .multilineTextAlignment(.center)
             Text(category)
                 .modifier(FootnoteBoldStyle())
         }
