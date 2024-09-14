@@ -20,7 +20,7 @@ struct FlashcardView: View {
                     HStack(spacing: 16) {
                         ForEach(viewModel.flashcards) { flashcard in
                             VStack {
-                                CardView(flashcard: flashcard, deleteAction: {
+                                CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
                                     viewModel.deleteFlashcard(flashcard)
                                 })
                             }
@@ -28,9 +28,7 @@ struct FlashcardView: View {
                     }
 //                    .padding(10)
                     .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-//                    .background(LinearGradient(gradient:
-//                                                Gradient(stops: [.init(color: Color(hex: 0x5856d6), location: 0.8), .init(color: Color(hex: 0xdbaf0), location: 1)]),
-//                                               startPoint: .top, endPoint: .bottom))//0xdba9f0
+
                 }
                 
                 // Button to add new flashcard

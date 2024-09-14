@@ -18,16 +18,20 @@ struct CardView: View {
     @State private var isEditing = false
     @State private var flashcard: FlashcardTask
     
+    @ObservedObject var viewModel: FlashcardViewModel  // Add ViewModel
+    
+    
     var deleteAction: () -> Void
     
-    init(flashcard: FlashcardTask, deleteAction: @escaping () -> Void) {
+    init(flashcard: FlashcardTask, viewModel: FlashcardViewModel, deleteAction: @escaping () -> Void) {
         _flashcard = State(initialValue: flashcard)
+        self.viewModel = viewModel  // Assign ViewModel
         self.deleteAction = deleteAction
     }
     
     var body: some View {
         ZStack {
-//            BGM_Color
+            //            BGM_Color
             if isFlipped {
                 cardBack
             } else {
@@ -69,32 +73,43 @@ struct CardView: View {
             controlButtons
         }
         .cardStyle(
-                backgroundColor: Color(hex: 0x212121),
-                textColor: .white,
-                hasOverlay: true,  // Toggle overlay dynamically
-                overlayColor: Color(hex: 0xc7c7cc),  // Custom overlay color
-                lineWidth: 2  // Custom stroke width
-            )
+            backgroundColor: Color(hex: 0x212121),
+            textColor: .white,
+            hasOverlay: true,  // Toggle overlay dynamically
+            overlayColor: Color(hex: 0xc7c7cc),  // Custom overlay color
+            lineWidth: 2  // Custom stroke width
+        )
         .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
     }
     
     // Control buttons (Edit and Delete)
-    private var controlButtons: some View {
-        HStack {
-            Spacer()
-            Button(action: { isEditing.toggle() }) {
-                Image(systemName: isEditing ? "checkmark" : "pencil")
-                    .controlButtonStyle(isEditing: isEditing)
-            }
-            Spacer()
-            Button(action: deleteAction) {
-                Image(systemName: "trash")
-                    .controlButtonStyle(isEditing: false)
-                    .foregroundColor(.red)
-            }
-            Spacer()
-        }
-    }
+       private var controlButtons: some View {
+           HStack {
+               Spacer()
+               Button(action: {
+                   if isEditing {
+                       // Save changes to ViewModel when editing finishes
+                       viewModel.editFlashcard(
+                           flashcard as! Flashcard,  // Assuming flashcard is of type Flashcard
+                           front: flashcard.frontText,
+                           back: flashcard.backText,
+                           category: flashcard.category
+                       )
+                   }
+                   isEditing.toggle()
+               }) {
+                   Image(systemName: isEditing ? "checkmark" : "pencil")
+                       .controlButtonStyle(isEditing: isEditing)
+               }
+               Spacer()
+               Button(action: deleteAction) {
+                   Image(systemName: "trash")
+                       .controlButtonStyle(isEditing: false)
+                       .foregroundColor(.red)
+               }
+               Spacer()
+           }
+       }
     
     // Edit view
     private func editView(frontText: Binding<String>, category: Binding<String>) -> some View {
@@ -102,7 +117,7 @@ struct CardView: View {
             TextField("Edit Text", text: frontText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-               
+            
             TextField("Edit Category", text: category)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -160,14 +175,14 @@ extension View {
             .shadow(color: .white.opacity(0.25), radius: 2, x:0, y:2)
             .foregroundColor(textColor)
             .cornerRadius(24)
-//            .shadow(radius: 10)
+        //            .shadow(radius: 10)
             .padding()
             .overlay(
                 hasOverlay ?
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(overlayColor, lineWidth: lineWidth)
-                        .frame(width: 335, height: 320, alignment: .center)
-                    : nil  // No overlay if `hasOverlay` is false
+                RoundedRectangle(cornerRadius: 24)
+                    .stroke(overlayColor, lineWidth: lineWidth)
+                    .frame(width: 335, height: 320, alignment: .center)
+                : nil  // No overlay if `hasOverlay` is false
             )
             .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
             .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
@@ -178,7 +193,7 @@ extension View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(
-            flashcard: Flashcard(frontText: "Front of the card", backText: "Back of the card", category: "Category"),
+            flashcard: Flashcard(frontText: "Front of the card", backText: "Back of the card", category: "Category"), viewModel: FlashcardViewModel(),
             deleteAction: {
                 print("Delete action triggered")
             }

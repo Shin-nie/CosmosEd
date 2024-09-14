@@ -6,14 +6,11 @@
 //  Create a FlashcardViewModel class that will manage the flashcards. This class will expose properties and methods for the view to interact with, keeping the business logic separate from the view.
 //     •    ViewModel: The FlashcardViewModel class is responsible for managing flashcards, including adding, deleting, and editing them. It exposes the flashcards list to the view (ContentView), which observes changes.
 
-//  ViewModel to manage flashcard interactions
-
 
 import SwiftUI
 import Combine
 
 class FlashcardViewModel: ObservableObject {
-    
     // Published properties to allow views to observe changes
     @Published var flashcards: [Flashcard] = [
         Flashcard(frontText: "What is the hottest planet in the solar system?", backText: "Venus", category: "SOLAR SYSTEM"),
@@ -23,6 +20,7 @@ class FlashcardViewModel: ObservableObject {
     ] {
         didSet {
             saveFlashcards()
+            // This method is called automatically whenever items is updated, thanks to the didSet observer. - (1.2)
         }
     }
     
