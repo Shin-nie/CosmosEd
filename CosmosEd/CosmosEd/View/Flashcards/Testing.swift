@@ -5,11 +5,13 @@
 import Foundation
 import SwiftUI
 
+//  MARK: - THIS VIEW FOR TESTING ONLY, DO NOT USED OR LINKED IN ANY CODE
+
 //  MARK: Step 4: Refactor CardView to Work with FlashcardTask
-//  We can modify CardView to interact with the protocol FlashcardTask instead of concrete classes. This way, it can work with any flashcard type that conforms to the protocol.
+//  modify CardView to interact with the protocol FlashcardTask instead of concrete classes. This way, it can work with any flashcard type that conforms to the protocol.
 
 //  MARK: Step 4.1: Update CardView to Work with ViewModel
-//  We can keep the CardView mostly the same, but we ensure that CardView interacts with the flashcard via the ViewModel’s exposed methods if needed.
+//  keep the CardView mostly the same, but  ensure that CardView interacts with the flashcard via the ViewModel’s exposed methods if needed.
 
 struct CardView2: View {
     @State private var isFlipped = false // Track flip state for each card

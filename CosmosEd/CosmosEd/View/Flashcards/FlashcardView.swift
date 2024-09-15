@@ -5,80 +5,94 @@
 
 import SwiftUI
 
-//  MARK: - Step 5.1: Update ContentView to Use the ViewModel
-//  Next, we refactor the ContentView so it interacts with the FlashcardViewModel. This way, the view is only responsible for rendering the UI and reacting to changes from the ViewModel.
+//  MARK: - Step 5.1: Update FlashcardView to Use the ViewModel
+//  refactor the FlashcardView so it interacts with the FlashcardViewModel. This way, the view is only responsible for rendering the UI and reacting to changes from the ViewModel.
 
 struct FlashcardView: View {
-    @StateObject var viewModel = FlashcardViewModel() // Use the ViewModel
     
+    //  MARK: - Propertities
+    
+    //  Use the ViewModel to manage flashcard data and logic
+    @StateObject var viewModel = FlashcardViewModel()
+    
+    //  MARK: - Body
     var body: some View {
         ZStack {
+            
+            //  MARK: Background color theme
             BGM_Color
             
+            //  MARK:
             VStack(alignment: .leading) {
-                //                ScrollView(.horizontal, showsIndicators: false) {
-                //                    HStack(spacing: 16) {
-                //                        ForEach(viewModel.flashcards) { flashcard in
-                //                            VStack {
-                //                                CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
-                //                                    viewModel.deleteFlashcard(flashcard)
-                //                                })
-                //                            }
-                //                        }
-                //                    }
-                ////                    .padding(10)
-                //                    .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-                //
-                //                }
                 
+                // MARK: - ScrollViewReader
+                // ScrollViewReader allows programmatic scrolling to specific flashcards based on their ID
                 ScrollViewReader { proxy in
+                    
+                    // MARK: ScrollView - to horizontally scroll through flashcards
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
+                            
+                            //  MARK: ForEach - Loop through each flashcard in the ViewModel
                             ForEach(viewModel.flashcards) { flashcard in
                                 VStack {
+                                    
+                                    //  CardView to render each individual flashcard
                                     CardView(flashcard: flashcard, viewModel: viewModel, deleteAction: {
-                                        viewModel.deleteFlashcard(flashcard)
+                                        viewModel.deleteFlashcard(flashcard) // Delete flashcard action
                                     })
                                 }
-                                .id(flashcard.id) // Give each flashcard an id
+                                .id(flashcard.id) // Give each flashcard an unique id, important for scrolling
                             }
-                            //  Make ScrollView not appear the line
+                            //  Ensure the ScrollView takes the full width of the screen and centers the cards
                             .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                         }
+                        
+                        // MARK: - Handle changes in flashcard count
+                        //  When the number of flashcards changes, scroll to the last added flashcard
                         .onChange(of: viewModel.flashcards.count) { _ in
-                            // Scroll to the newly added flashcard
+                            // Scroll to the newly added flashcard when the count changes
                             if let lastFlashcard = viewModel.flashcards.last {
                                 proxy.scrollTo(lastFlashcard.id, anchor: .center)
                             }
                         }
                     }
+                    // MARK: Framesize - Set the frame size for ScrollView
                     .frame(minWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                 }
                 
-                
-                // Button to add new flashcard
+                // MARK: - Button to add new flashcard
                 Button(action: {
+                    // Call ViewModel to add a new flashcard
                     viewModel.addFlashcard(frontText: "New Front", backText: "New Back", category: "Category")
                 }) {
                     Spacer()
-                    Text("Add Flashcard")
-                        .font(.headline)
-                        .padding()
-                        .background(Color.black)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color(hex: 0xc7c7cc), lineWidth: 2)
-                        )
-                        .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
-                        .padding(.top)
+                    addFlashcard_Btn
                     Spacer()
                 }
-                .offset(y: -100)
+                .offset(y: -100) // Adjust button position
             }// End of VStack
+            //  Ensure the VStack is full screen width
             .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
         }
+    }
+    
+    //  MARK: - SubView
+    //  MARK: Adding flashcard button
+    //  Reusable button component for adding flashcards
+    var addFlashcard_Btn: some View {
+            Text("Add Flashcard")
+                .font(.headline)
+                .padding()
+                .background(Color.black)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(hex: 0xc7c7cc), lineWidth: 2)
+                )
+                .shadow(color: .white.opacity(0.2), radius: 20, x: 0, y: 10)
+                .padding(.top)
     }
     
     //  MARK: - BACKGROUND COLOR THEME

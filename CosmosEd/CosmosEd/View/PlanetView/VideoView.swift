@@ -7,22 +7,23 @@ import AVKit
 
 struct VideoView: View {
     //  MARK: - Properties
-    @ObservedObject var viewModel: PlanetViewModel;
-    @ObservedObject var planetAPI = MediaObjectAPI()
-    @State var videoLinks: [MediaObjectItem] = []
+    @ObservedObject var viewModel: PlanetViewModel; // Observes changes from the ViewModel to get the selected planet
+    @ObservedObject var planetAPI = MediaObjectAPI() // Observes the API class for fetching media objects (videos and images)
+    @State var videoLinks: [MediaObjectItem] = [] // Holds the list of video media objects
     
-//    //  MARK: Keep track of the search input
+    //  MARK: Keep track of the search input
     @State private var searchText = ""
+    // State to hold the search text entered by the user
     
     
     // Filters the media based on search text, returns the full list if search text is empty
     var filteredPlanets: [MediaObjectItem] {
         if searchText.isEmpty {
-            return planetAPI.planets
+            return planetAPI.planets // Return the full list if no search text
         } else {
             return planetAPI.planets.filter { item in
-                let title = item.data[0].title.lowercased()
-                return title.contains(searchText.lowercased())
+                let title = item.data[0].title.lowercased() // Convert the title to lowercase for case-insensitive search
+                return title.contains(searchText.lowercased()) // Return items where the title contains the search text
             }
         }
     }
@@ -30,10 +31,12 @@ struct VideoView: View {
     //  MARK: - Body
     var body: some View {
         ZStack {
+            
+            // Background color
             BGM_Color
             
             //  MARK: - VIDEO
-            ScrollView(.vertical) {
+            ScrollView(.vertical) { // Scrollable vertical view to list videos
                 
                 VStack (alignment: .leading) {
 
@@ -42,15 +45,18 @@ struct VideoView: View {
                     SearchBar(text: $searchText, placeholder: "Search for videos...")
                 
                     //  MARK: Title's Lable
+                    // Section header with a play icon and "Videos" label
                     SectionHeader(iconName: "play.rectangle.fill", title: "Videos", trailingIconName: "chevron.down")
                     
                     //  MARK: Video for Placeholder
+                    // A placeholder video or image to be displayed
                     MediaView(imageName: "mercuryNasa", iconOverlay: "arrowtriangle.forward.circle.fill", cornerRadius: 30)
                         .padding(.bottom, 20)
                     
                     
                     // Check if planets data is available
                     if planetAPI.planets.isEmpty {
+                        // Show loading text if the data hasn't been fetched yet
                         Text("Loading Videos...")
                             .font(.title)
                             .padding()
@@ -58,6 +64,7 @@ struct VideoView: View {
                         
                     } else {
                         //  MARK: Images/Videos List
+                        // Display the filtered media items (filteredPlanets)
                         // List of planets
                         // Display the filtered media items
                         ForEach(filteredPlanets, id: \.data[0].nasaID) { item in
@@ -65,7 +72,10 @@ struct VideoView: View {
                             //  CAS
                             VStack(alignment: .leading) {
                                 
+                                // Check if the media item is an image
                                 if item.href.contains("/image/"){
+                                    
+                                    // Uncomment the code to display images if needed
                                     
                                     //  Display image
     //                                if let link = item.links?.first(where: { $0.render == "image" || $0.href.hasSuffix(".jpg") }) {
@@ -91,7 +101,7 @@ struct VideoView: View {
                                 
                                 // Display video
                                 if item.href.contains("/video/"){
-                                    //  Media Title
+                                    //  Display the media title
                                     Text(item.data[0].title)
                                         .foregroundStyle(.white)
                                         .opacity(0.8)
@@ -99,12 +109,14 @@ struct VideoView: View {
                                         .fontWeight(.bold)
                                         .padding(.horizontal)
                                     
+                                    //  Display the date created
                                     Text("Date: \(item.data[0].dateCreated)")
                                         .foregroundStyle(.white)
                                         .font(.footnote)
                                         .fontWeight(.light)
                                         .padding(.horizontal)
                                     
+                                    // Video player for playing the video
                                     VideoPlayer(player: AVPlayer(url: URL(string: convertToHTTPS(urlString: "https://images-assets.nasa.gov/video/\(item.data[0].nasaID)/\(item.data[0].nasaID)~mobile.mp4"))!))
 
                                         .aspectRatio(contentMode: .fill)
@@ -126,14 +138,14 @@ struct VideoView: View {
                 }// End Of VStack 2
                 
             }// (I) End Of ScrollView
-            //  Highlighting the box
+            //  Apply shadows to the scrollable box - Highlighting
             .shadow(color: Color(hex: 0xe5e5ea, alpha: 0.25), radius: 7, x: 0, y: 5)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
             .shadow(color: Color(hex: 0xd1d1d6, alpha: 0.11), radius: 6, x: 0, y: 8)
             
 //             MARK: Uncomment this one to fetch Data
             .onAppear {
-                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet)
+                planetAPI.fetchMediaObjects(searchQuery: viewModel.currentPlanet) // Fetch media based on the selected planet
             }
             
         }

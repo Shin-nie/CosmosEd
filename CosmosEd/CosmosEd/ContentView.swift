@@ -55,7 +55,7 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     VStack(spacing: 16) {
                         Picker("", selection: $selection_mhx) {
-                            ForEach(["Sun", "Mercury", "Venus", "Earth"], id: \.self) {
+                            ForEach(["Mercury", "Venus", "Earth", "Mars"], id: \.self) {
                                 Text($0)
                             }
                         }
@@ -91,8 +91,7 @@ struct ContentView: View {
                 // Bottom Menu
                 VStack(alignment: .leading, spacing: 12) {
                     
-                    //  MARK: Home
-                    bottomMenuItem(title: "Home", systemImageName: "house.fill")
+                    //  bottomMenuItem(title: "Home", systemImageName: "house.fill")
                     
                     //  MARK: NAVIGATE TO GENRAL INFORMATION - "PlanetDetailView"
                     // Wrap "General Information" with NavigationLink
